@@ -5,6 +5,8 @@ import {
 	takeEvery,
 	takeLatest
 } from 'redux-saga/effects';
+import store from '../redux/store'
+import { cmd } from '../helper'
 
 import * as action from '../redux/actions';
 import * as background from './background'
@@ -25,9 +27,9 @@ function* fetchAddTaskWorker() {
 function* fetchDeleteTaskWorker() {
 	yield takeEvery(action.task.deleteTask, background.deleteTask)
 }
-function* fetchUpdateTaskWorker() {
-	yield takeEvery(action.task.updateTask, background.updateTask)
-}
+// function* fetchUpdateTaskWorker() {
+// 	yield takeEvery(action.task.updateTask, background.updateTask)
+// }
 function* fetchActivateTaskWorker() {
 	yield takeEvery(action.task.activateTask, background.activateTask)
 }
@@ -35,15 +37,44 @@ function* fetchDisableTaskWorker() {
 	yield takeEvery(action.task.disableTask, background.disableTask)
 }
 
+function* fetchGetTaskList() {
+	yield takeEvery(action.task.getTaskList, background.getTaskList)
+}
+
+function* fetchUpdateActiveTask() {
+	yield takeEvery(action.task.updateActiveTask, task.updateActiveTask)
+}
+
+function* fetchGetDoneList() {
+	yield takeEvery(action.task.getDoneList, background.getDoneList)
+}
+
+function* fetchDoneTask() {
+	yield takeEvery(action.task.doneTask, background.doneTask)
+}
+function* removeFromDoneTask() {
+	yield takeEvery(action.task.removeFromDoneTask, background.removeFromDoneTask)
+}
+
+window.addEventListener('focus', async () => {
+    const task_list = await cmd.doSet({ cmd: `get_task_list`})
+    store.dispatch(action.task.taskListSet(task_list))
+})
+
 export default function* rootSaga() {
 	yield all([
 		fetchWorksWorker(),
 
 		fetchAddTaskWorker(),
 		fetchDeleteTaskWorker(),
-		fetchUpdateTaskWorker(),
+		// fetchUpdateTaskWorker(),
 		fetchActivateTaskWorker(),
-		fetchDisableTaskWorker()
+		fetchDisableTaskWorker(),
+		fetchGetTaskList(),
+		fetchUpdateActiveTask(),
+		fetchGetDoneList(),
+		fetchDoneTask(),
+		removeFromDoneTask()
 
 	])
   }

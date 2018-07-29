@@ -1,42 +1,67 @@
 import { withRouter } from "react-router";
 import { Switch, Route } from "react-router-dom";
 import React, { Component } from "react";
-import { Block } from "../../ui";
+import { Block, HeaderTitle } from "../../ui";
 import Slide from "@material-ui/core/Slide";
-import Typography from "@material-ui/core/Typography";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import TimerIcon from "@material-ui/icons/Timer";
-import ArrowBack from "@material-ui/icons/ArrowBack";
-import Button from '@material-ui/core/Button';
-
+import {Home, Timer, ArrowBack } from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
+import UserNavigation from "./user_navigation";
 
 const UserHeaderRouter = ({}) => (
-  <Switch>
-    <Route path="/" exact component={HomeHeader} />
-    <Route path="/create" component={CreateHeader} />
-  </Switch>
+  <React.Fragment>
+    <Switch>
+      <Route path="/" exact component={HomeHeader} />
+      <Route path="/done" exact component={DoneHeader} />
+      <Route path="/create" component={CreateHeader} />
+      <Route path="/statistic" component={StatisticHeader} />
+      <Route path="/settings" component={SettingsHeader} />
+    </Switch>
+    <UserNavigation />
+  </React.Fragment>
 );
 const CreateHeader = ({ history }) => (
   <Slide direction="right" in={true} mountOnEnter unmountOnExit>
     <Block>
-        <Button variant="fab" mini color="default"onClick={history.goBack} aria-label="add">
-          <ArrowBack  />
-        </Button>
-     
-      <Typography variant="title" color="inherit">
-        Create Task
-      </Typography>
-      <TimerIcon color={`white`} />
+      <Button
+        variant="fab"
+        mini
+        color="default"
+        onClick={history.goBack}
+        aria-label="add"
+      >
+        <ArrowBack />
+      </Button>
+
+      <HeaderTitle>Create Task</HeaderTitle>
+      <Timer color={`white`} />
     </Block>
   </Slide>
 );
 const HomeHeader = ({}) => (
   <Slide direction="up" in={true} mountOnEnter unmountOnExit>
+    <Block justify={`flex-start`}>
+      <HeaderTitle>Task List</HeaderTitle>
+    </Block>
+  </Slide>
+);
+const DoneHeader = ({}) => (
+  <Slide direction="up" in={true} mountOnEnter unmountOnExit>
     <Block>
-      <Typography variant="title" color="inherit">
-        Home
-      </Typography>
-      <AccountCircle />
+      <HeaderTitle>Done Task</HeaderTitle>
+    </Block>
+  </Slide>
+);
+const StatisticHeader = ({}) => (
+  <Slide direction="up" in={true} mountOnEnter unmountOnExit>
+    <Block>
+      <HeaderTitle>Statistic</HeaderTitle>
+    </Block>
+  </Slide>
+);
+const SettingsHeader = ({}) => (
+  <Slide direction="up" in={true} mountOnEnter unmountOnExit>
+    <Block>
+      <HeaderTitle>Setting</HeaderTitle>
     </Block>
   </Slide>
 );

@@ -34,6 +34,9 @@ export default handleActions(
       ...store,
       list: [...store.list, payload]
     }),
+    [task.removeFromDoneTask]: (store, { payload }) => ({
+      ...store, done_list: store.done_list.filter( task => task.id !==payload )
+    }),
     [task.taskSelect]: (store, { payload }) => ({
       ...store,
       selected: selectTask(payload, store.selected)
@@ -62,12 +65,15 @@ export default handleActions(
     [task.doneTask]: (store, { payload }) => ({
       ...store, selected: [], done: [...store.done, ...store.selected], list: deleteTask(store.selected, store.list)
     }),
-    [task.doneOneTask]: (store, { payload }) => ({
-      ...store, done: [...store.done, store.list.find(task => task.id === payload)], list: deleteOneTask(payload, store.list)
+    [task.doneTask]: (store, { payload }) => ({
+      ...store, list: deleteOneTask(payload, store.list)
     }),
 
     [task.updateActiveTask]: (store, { payload }) => ({
       ...store, active: payload
+    }),
+    [task.taskListSetDone]: (store, { payload }) => ({
+      ...store, done_list: payload
     })    
   },
   initialState.task

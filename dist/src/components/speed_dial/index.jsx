@@ -37,7 +37,7 @@ class SpeedDialComponent extends React.Component {
     hidden: false
   };
 
-  deleteTask = () => this.props.deleteTask()
+  deleteTask = () => this.props.deleteTask(this.props.selected_task)
 
   copyTask = () => this.props.copyTask()
 

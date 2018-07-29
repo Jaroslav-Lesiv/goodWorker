@@ -4,12 +4,7 @@ const app = {
     offset: 800
 }
 
-const header = {
-    minHeight: 60,
-    closeIcon: {
-        size: 25
-    }
-}
+
 
 const typography = {
     h1: 30
@@ -21,13 +16,21 @@ const animation = {
 }
 
 const color = {
-    primary: '#3a83ed',
+    primary: '#0f9d58 ',
     danger: '#D8000C',
     warn: '#D8000C',
     help: '#95A5A6',
-    white: '#ffffff'
+    white: '#ffffff',
+    light: '#f0f3f4',
+    text_color: 'rgba(0, 0, 0, 0.54)'
 }
-
+const header = {
+    minHeight: 50,
+    background: color.primary,
+    closeIcon: {
+        size: 25
+    }
+}
 const styles = {
     boxShadow: '0 0 5px 0 rgba(0,0,0,.4)'
 }

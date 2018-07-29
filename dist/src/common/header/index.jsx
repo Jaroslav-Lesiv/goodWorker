@@ -6,7 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import UserHeaderRouter from "./user_header";
 import HeaderRouter from "./header";
 import { withRouter } from "react-router";
-
+import { Header as HeaderUI } from "../../ui";
 
 const mapStateToProps = ({ user }) => ({
   isLogin: user.isLogin
@@ -25,9 +25,7 @@ export class Header extends Component {
   render() {
     const { isLogin } = this.props;
     return (
-      <AppBar position="static" color="primary">
-        <Toolbar>{isLogin ? <UserHeaderRouter /> : <HeaderRouter />}</Toolbar>
-      </AppBar>
+      <HeaderUI>{isLogin ? <UserHeaderRouter /> : <HeaderRouter />}</HeaderUI>
     );
   }
 }

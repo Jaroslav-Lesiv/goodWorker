@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { color, styles } from "../../const";
+import { color, styles } from "../../variables";
 import { InputWrapper, InputUI, IconWrapper, HelperText } from "./";
 
 const TextAreaWrapper = styled(InputWrapper)``;

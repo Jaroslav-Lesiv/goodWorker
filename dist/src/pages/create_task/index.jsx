@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { task } from "../../redux/actions";
 import Slide from "@material-ui/core/Slide";
 import {
@@ -16,7 +14,6 @@ import { connect } from "react-redux";
 
 import { Label, Description, Timer } from "@material-ui/icons";
 
-const mapStateToProps = () => ({});
 
 const mapDispatchToProps = {
   addTask: task.addTask

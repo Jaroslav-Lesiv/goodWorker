@@ -2,7 +2,12 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router'
 import { Switch, Route } from 'react-router-dom';
 import LoginPage from './pages/auth/login'
-import TaskPages from './pages/tasklist'
+import TaskPage from './pages/tasklist'
+import DonePage from './pages/donelist'
+
+import StatisticPage from './pages/statistic'
+import SettingsPage from './pages/settings'
+
 import CreateTaskPage from './pages/create_task'
 
 @withRouter
@@ -24,8 +29,13 @@ class UserRouter extends PureComponent {
     render() {
         return (
             <Switch>
-                <Route path='/' exact component={TaskPages} />
+                <Route path='/' exact component={TaskPage} />
                 <Route path='/create' component={CreateTaskPage} />
+                
+                <Route path='/done' component={DonePage} />
+                <Route path='/statistic' component={StatisticPage} />
+                <Route path='/settings' component={SettingsPage} />
+                
             </Switch>
         )
     }

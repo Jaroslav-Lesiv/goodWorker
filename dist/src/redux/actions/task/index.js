@@ -4,6 +4,8 @@ import { createActions } from 'redux-actions';
 export const { task } = createActions({
   TASK: {
       TASK_LIST_SET: payload => payload,
+      TASK_LIST_SET_DONE: payload => payload,
+      GET_DONE_LIST: payload => payload,
       TASK_LIST_UPDATE: payload => payload,
 
       TASK_SET_ONE: payload => payload,
@@ -18,8 +20,6 @@ export const { task } = createActions({
       SELECT_ALL: payload => payload,
       UNSELECT_ALL: payload => payload,
 
-      DONE_TASK: payload => payload,
-
       ACTIVATE_TASK: payload => payload,
       DISABLE_TASK: payload => payload,
 
@@ -29,5 +29,7 @@ export const { task } = createActions({
       DELETE_TASK: payload => payload,
       UPDATE_TASK: payload => payload,
       DONE_TASK: payload => payload,
+      REMOVE_FROM_DONE_TASK: payload => payload,
+      GET_TASK_LIST: payload => payload
   }
 })

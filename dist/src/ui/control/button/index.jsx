@@ -1,6 +1,6 @@
 import {
     animation
-} from "../../const";
+} from "../../variables";
 import styled from "styled-components";
 
 const ButtonUI = styled.button `

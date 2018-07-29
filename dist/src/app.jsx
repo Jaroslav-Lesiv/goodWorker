@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { app, task } from "./redux/actions";
-import { Application, AppCloseIcon, Wrapper, Main } from "./ui";
+import { Application, Wrapper, Main } from "./ui";
 import { RootRouter, UserRouter } from "./router";
 import { withRouter } from "react-router";
-
+import './initStyle'
 import { connect } from "react-redux";
 import Header from "./common/header";
+import Navigation from "./common/navigation";
 
 const mapStateToProps = ({ app, user }) => ({
   isOpen: app.isOpen,
@@ -15,7 +16,7 @@ const mapStateToProps = ({ app, user }) => ({
 const mapDispatchToProps = {
   open: app.open,
   openConvert: app.openConvert,
-  updateActiveTask: task.updateActiveTask
+  updateActiveTask: task.updateActiveTask,
 };
 @withRouter
 @connect(
@@ -23,9 +24,7 @@ const mapDispatchToProps = {
   mapDispatchToProps
 )
 class App extends Component {
-  closeApp = () => {
-    this.props.open(false);
-  };
+
 
   componentDidMount = async () => {
     try {
@@ -65,7 +64,6 @@ class App extends Component {
         <Wrapper>
           <Header />
           <Main>
-            <AppCloseIcon onClick={this.closeApp} />
             {isLogin ? <UserRouter /> : <RootRouter /> }
            
           </Main>

@@ -3,14 +3,14 @@ import {
 	put,
 	all,
 	takeEvery,
-	takeLatest
+    takeLatest,
+    select
 } from 'redux-saga/effects';
 import { cmd } from '../../helper'
 import * as action from '../../redux/actions';
 
 function* activateTask({payload}) {
-    console.log('payload', payload)
-    yield cmd.doSet({ cmd: `activete_task`, data: payload })
+    yield cmd.doSet({ cmd: `activate_task`, data: payload })
 }
 
 function* disableTask({payload}) {
@@ -25,6 +25,10 @@ function* doneTask({payload}) {
     yield cmd.doSet({ cmd: `done_task`, data: payload })
 }
 
+function* removeFromDoneTask({payload}) {
+    yield cmd.doSet({ cmd: `remove_from_done`, data: payload })
+}
+
 function* addTask({payload}) {
     yield cmd.doSet({ cmd: `add_task`, data: payload })
 }
@@ -37,6 +41,16 @@ function* updateTask({payload}) {
     yield cmd.doSet({ cmd: `update_task`, data: payload })
 }
 
+function* getTaskList() {
+    const task_list = yield cmd.doSet({ cmd: `get_task_list`})
+    yield put(action.task.taskListSet(task_list))
+}
+
+function* getDoneList() {
+    const done_list = yield cmd.doSet({ cmd: `get_done_list`})
+    yield put(action.task.taskListSetDone(done_list))
+}
+
 export {
     activateTask,
     disableTask,
@@ -45,5 +59,8 @@ export {
     doneTask,
     addTask,
     deleteTask,
-    updateTask
+    updateTask,
+    getTaskList,
+    getDoneList,
+    removeFromDoneTask
 }

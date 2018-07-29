@@ -1,7 +1,9 @@
 import styled, { keyframes } from "styled-components";
 import React from "react";
-import { header, app, animation, color } from "../const";
+import { header, app, animation, color } from "../variables";
 import { APP_WIDTH, APP_HEIGHT, APP_NAME } from '../../config/index'
+import shadows from "@material-ui/core/styles/shadows";
+import { Typography } from "@material-ui/core";
 const show = keyframes`
   from {
     transform: translateX(${app.offset}px)
@@ -52,7 +54,21 @@ const Application = styled.div.attrs({
     }
   }
 `;
-
+const HeaderNavigationList = styled.ul.attrs({
+  id: `${APP_NAME}_HeaderNavigationList`
+ })`
+ &#${APP_NAME}_HeaderNavigationList {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  &:last-child {
+    margin-left: 30px;
+  }
+ }
+  
+`
 const MainUI = styled.main`
   display: flex;
   justify-content: center;
@@ -69,8 +85,39 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
+const Header = styled.header.attrs({
+  id: `${APP_NAME}_Header`
+})`
+  &#${APP_NAME}_Header {
+    min-height: ${header.minHeight}px;
+    width: 100%;
+    padding: 0 15px;
+    background-color: ${header.background};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: ${shadows[2]};
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+`
+
+const HeaderTitle = styled.h2.attrs({
+  id: `${APP_NAME}_HeaderTitle`,
+})`
+  &#${APP_NAME}_HeaderTitle {
+    color: #ffffff !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    font-weight: 600  !important;
+    text-transform: uppercase !important;
+  }
+`
 export {
   MainUI,
   Wrapper,
   Application,
+  Header,
+  HeaderTitle,
+  HeaderNavigationList
 }

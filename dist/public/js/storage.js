@@ -6,7 +6,7 @@ const Storage = class {
 
     get(key, _type) {
         return new Promise((res, rej) => {
-            console.group(`Try to get property from browser storage`, `key:`, key)
+            console.log(`Try to get property from browser storage`, `key:`, key)
             chrome.storage.sync.get([key], data => {
                 const result = data[key] || _type || null
                 res(result)
@@ -16,7 +16,7 @@ const Storage = class {
 
     set(key, value) {
         return new Promise((res, rej) => {
-            console.group(`Try to set property to browser storage`, `key:`, key, `value:`, value)
+            console.log(`Try to set property to browser storage`, `key:`, key, `value:`, value)
             chrome.storage.sync.set({ [key]: value }, () => {
                 res(true)
             });

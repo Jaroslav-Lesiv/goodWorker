@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import {  color, styles } from "../const";
+import {  color, styles } from "../variables";
 
 const Flex = styled.div`
     width: 100%;
@@ -21,7 +21,8 @@ const Align = styled(FlexWrap)`
     justify-content: ${({ justify }) => justify || 'space-around'};
 `
 
-const Block = styled(Align)`
+const 
+Block = styled(Align)`
 `
 
 const BlockFormUI  = Block.withComponent('form')

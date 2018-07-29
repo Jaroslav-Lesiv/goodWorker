@@ -25,6 +25,9 @@
     "default_title": "goodWorcker",
     "default_icon": "/icons/icon32.png"
   },
+  "web_accessible_resources": [
+    "/icons/icon64.png"
+  ],
   "permissions": [
     "<all_urls>",
     "background",
@@ -36,7 +39,9 @@
     "activeTab",
     "tabs",
     "storage",
-    "file://*/*"
+    "file://*/*",
+    "notifications",
+    "alarms"
   ]
 	
 }

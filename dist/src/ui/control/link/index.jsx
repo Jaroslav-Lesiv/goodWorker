@@ -8,43 +8,58 @@ const HeaderNavigationItem = styled.li.attrs({
   id: `${APP_NAME}_HeaderNavigationItem`
  })`
   &#${APP_NAME}_HeaderNavigationItem {
-    list-style: none;
-    margin-left: 15px;
-    display: inline-flex;
+    list-style: none !important;
+    margin-left: 7px !important;
+    display: inline-flex !important;
 
+    width: 40px !important;
+    height: 40px !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px !important;
+    cursor: pointer !important;
+    &:hover {
+      color: #ffffff !important;
+      background-color: rgba(0,0,0,.2) !important;
+      svg {
+        transform: scale(1.2)
+      }
+    }
+    svg {
+      transition: ${animation.fast}
+    }
   }
  `
-
 
 const IconNavLink = styled(DefaultNavLink).attrs({
   id: `${APP_NAME}_IconNavLink`
 })`
   &#${APP_NAME}_IconNavLink {
-    color: ${({ color }) => color || '#ffffff'};
-    text-decoration: none;
-    border-radius: 25px;
-    border: none;
-    width: 40px;
-    height: 40px;
-    padding: 5px;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 600;
+    color: ${({ color }) => color || '#ffffff'} !important;
+    text-decoration: none !important;
+    border-radius: 25px !important;
+    border: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 5px !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
     svg {
       margin: 3px !important;
     }
     &.active_link {
-      color: #ffffff;
-      cursor: default;
-      background-color: rgba(0,0,0,.4);
+      color: #ffffff !important;
+      cursor: default !important;
+      background-color: rgba(0,0,0,.4) !important;
       &:hover {
-        color: #ffffff;
-        background-color: rgba(0,0,0,.4);
+        color: #ffffff !important;
+        background-color: rgba(0,0,0,.4) !important;
       }
     }
     &:hover {
-      color: #ffffff;
-      background-color: rgba(0,0,0,.2);
+      color: #ffffff !important;
+      background-color: rgba(0,0,0,.2) !important;
     }
 
   }`

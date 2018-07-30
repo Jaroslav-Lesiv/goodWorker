@@ -2,17 +2,28 @@ import styled from "styled-components";
 import React from "react";
 import { color, styles } from "../../variables";
 
-import { InputWrapper, InputUI, IconWrapper, HelperText } from "./";
+import { OuterInputWrapper, OuterInput, IconWrapper, HelperText } from "./";
+import { APP_NAME } from "../../../config";
 
-const TimeInputWrapper = styled(InputWrapper)`
-  min-width: 95px;
-  max-width: 100px;
+const TimeInputWrapper = styled(OuterInputWrapper).attrs({
+  className: `${APP_NAME}_TimeInputWrapper`
+})`
+  &.${APP_NAME}_TimeInputWrapper {
+    min-width: 95px !important;
+    max-width: 100px !important;
+    margin-bottom: 20px !important;
+  }
 `;
 
-const TimeInputUI = styled(InputUI)`
-  max-width: 90px;
-  min-width: 90px;
-  margin: 0 5px;
+const TimeInputUI = styled(OuterInput).attrs({
+  className: `${APP_NAME}_TimeInputUI`
+})`
+&.${APP_NAME}_TimeInputUI {
+  max-width: 50px !important;
+  min-width: 40px !important;
+  margin: 0 5px !important;
+}
+  
 `;
 
 const TimeInput = ({

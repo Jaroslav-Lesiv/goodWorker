@@ -63,8 +63,8 @@ const HeaderNavigationList = styled.ul.attrs({
   align-items: center;
   padding: 0;
   margin: 0;
-  &:last-child {
-    margin-left: 30px;
+  li:last-child {
+    margin-left: 20px;
   }
  }
   

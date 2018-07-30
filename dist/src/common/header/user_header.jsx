@@ -1,7 +1,7 @@
 import { withRouter } from "react-router";
 import { Switch, Route } from "react-router-dom";
 import React, { Component } from "react";
-import { Block, HeaderTitle } from "../../ui";
+import { Block, HeaderTitle, HeaderNavigationItem } from "../../ui";
 import Slide from "@material-ui/core/Slide";
 import {Home, Timer, ArrowBack } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
@@ -22,18 +22,13 @@ const UserHeaderRouter = ({}) => (
 const CreateHeader = ({ history }) => (
   <Slide direction="right" in={true} mountOnEnter unmountOnExit>
     <Block>
-      <Button
-        variant="fab"
-        mini
-        color="default"
+      <HeaderNavigationItem
         onClick={history.goBack}
-        aria-label="add"
       >
         <ArrowBack />
-      </Button>
+      </HeaderNavigationItem>
 
       <HeaderTitle>Create Task</HeaderTitle>
-      <Timer color={`white`} />
     </Block>
   </Slide>
 );

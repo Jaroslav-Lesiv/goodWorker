@@ -7,13 +7,13 @@ import {
   ButtonUI,
   BlockForm,
   TimeInput,
+  InputOuter,
   TextArea
 } from "../../ui";
 import { validate, toSeconds } from "../../helper";
 import { connect } from "react-redux";
 
 import { Label, Description, Timer } from "@material-ui/icons";
-
 
 const mapDispatchToProps = {
   addTask: task.addTask
@@ -62,7 +62,7 @@ export default class CreateTaskPage extends Component {
         label,
         description,
         plain_time: toSeconds(hour, "hour") + toSeconds(minutes, "minutes"),
-        spend_time: 0,
+        spend_time: 0
       };
       this.props.addTask(data);
       this.clearData();
@@ -82,21 +82,29 @@ export default class CreateTaskPage extends Component {
             justify={"flex-start"}
             style={{ width: "100%", height: "auto" }}
           >
-            <Input
-              type="text"
+            <InputOuter
+              inputProps={{
+                type: "text",
+                value: label,
+                onChange: this.handleChangeInput("label"),
+                placeholder: "Enter task labek",
+                autoFocus: true
+              }}
               error={errors.label}
-              placeholder="Enter label "
-              value={label}
-              onChange={this.handleChangeInput("label")}
               icon={<Label />}
             />
 
-            <TextArea
-              type="text"
+            <InputOuter
+              type={"textarea"}
+              inputProps={{
+                type: "text",
+                value: description,
+                onChange: this.handleChangeInput("description"),
+                placeholder: "Enter description",
+                rows: 7,
+                maxLength: 512
+              }}
               error={errors.description}
-              placeholder="Enter description "
-              value={description}
-              onChange={this.handleChangeInput("description")}
               icon={<Description />}
             />
 

@@ -8,12 +8,14 @@ import {
   BlockForm,
   TimeInput,
   InputOuter,
-  TextArea
+  TextArea,
+  CheckListInput
 } from "../../ui";
 import { validate, toSeconds } from "../../helper";
 import { connect } from "react-redux";
 
-import { Label, Description, Timer } from "@material-ui/icons";
+import { Label, Description, Timer, Add, Clear } from "@material-ui/icons";
+import { Checkbox } from "material-ui";
 
 const mapDispatchToProps = {
   addTask: task.addTask
@@ -29,8 +31,27 @@ export default class CreateTaskPage extends Component {
     label: "",
     description: "",
     hour: 0,
-    minutes: 0
+    minutes: 0,
+    check_list: [],
+    check_item: ""
   };
+
+  createCheckItem = () => {
+    console.log(this.state)
+    this.setState(state => ({
+      check_list: [
+        ...state.check_list,
+        {
+          id: +new Date(),
+          label: state.check_item,
+          done: false
+        }
+      ],
+      check_item: ""
+    }));
+  };
+
+  
 
   handleChangeInput = name => event => {
     const { value } = event.target;
@@ -46,13 +67,15 @@ export default class CreateTaskPage extends Component {
       label: "",
       description: "",
       hour: 0,
-      minutes: 0
+      minutes: 0,
+      check_item: "",
+      check_list: []
     });
   };
 
   submit = event => {
     event.preventDefault();
-    const { label, description, hour, minutes } = this.state;
+    const { label, description, hour, minutes, check_list } = this.state;
     if (
       validate({ label, description, hour, minutes }, errors =>
         this.setState({ errors: { ...errors } })
@@ -61,6 +84,7 @@ export default class CreateTaskPage extends Component {
       const data = {
         label,
         description,
+        check_list,
         plain_time: toSeconds(hour, "hour") + toSeconds(minutes, "minutes"),
         spend_time: 0
       };
@@ -70,8 +94,39 @@ export default class CreateTaskPage extends Component {
     }
   };
 
+  clearCheckListForm = () => this.setState({ check_item: "" });
+
+
+  toogleCheckListItem = id => {
+    const { check_list } = this.state
+    const _check_list = [...check_list]
+    const item_idx = check_list.find( _item => _item.id === id )
+    _check_list[item_idx] = {..._check_list[item_idx], done: !_check_list[item_idx].done}
+    this.setState({ check_list: _check_list })
+  }
+
+  changeCreatedtask = id => event => {
+    const { check_list } = this.state
+    const _check_list = [...check_list]
+    const item_idx = check_list.find( _item => _item.id === id )
+    _check_list[item_idx] = {..._check_list[item_idx], label: event.target.value}
+    this.setState({ check_list: _check_list })
+  }
+
+  removeCheckListItem = id => {
+    this.setState(state => ({ check_list: state.check_list.filter( item => item !== id ) }))
+  }
   render() {
-    const { errors, label, description, hour, minutes } = this.state;
+    const {
+      errors,
+      label,
+      description,
+      hour,
+      minutes,
+      check_list,
+      check_item
+    } = this.state;
+    console.log(this.state)
     return (
       <Slide direction="right" in={true} mountOnEnter unmountOnExit>
         <Block>
@@ -108,7 +163,7 @@ export default class CreateTaskPage extends Component {
               icon={<Description />}
             />
 
-            <Block justify={`center`} align={`start`} grow={`initial`}>
+            <Block justify={`center`} align={`flex-start`} grow={`initial`}>
               <TimeInput
                 error={errors.hour}
                 placeholder="Hours"
@@ -126,6 +181,34 @@ export default class CreateTaskPage extends Component {
                 onChange={this.handleChangeInput("minutes")}
                 icon={<Timer />}
               />
+            </Block>
+
+            <Block justify={`center`} align={`flex-start`} grow={`initial`}>
+              {check_list.map(_check_item => (
+                <CheckListInput
+                  key={_check_item.id}
+                  inputProps={{
+                    type: "check_item",
+                    value: _check_item.label,
+                    onChange: this.changeCreatedtask(_check_item.id)
+                  }}
+                  icon={<Checkbox checked={_check_item.done} onClick={() => this.toogleCheckListItem(_check_item.id)} />}
+                  iconAfter={<Clear onClick={() => this.removeCheckListItem(_check_item.id)} />}
+                />
+              ))}
+              {/* <form onSubmit={this.createCheckItem}> */}
+              <CheckListInput
+                inputProps={{
+                  type: "check_item",
+                  value: check_item,
+                  onChange:  this.handleChangeInput("check_item"),
+                  placeholder: "Enter check item"
+                }}
+                error={errors.label}
+                icon={<Add onClick={this.createCheckItem} />}
+                iconAfter={<Clear onClick={this.clearCheckListForm} />}
+              />
+              {/* </form> */}
             </Block>
 
             <ButtonUI type={`submit`}>Create task</ButtonUI>

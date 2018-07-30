@@ -25,8 +25,8 @@ const IconWrapper = styled.span.attrs({
 })`
   &.${APP_NAME}_IconWrapper {
     position: absolute;
+    ${({ after }) => after ? `right: 12px;` : `left: 12px;`}
     top: 8px;
-    left: 12px;
     color: ${color.primary};
     svg {
       color: ${color.primary};
@@ -61,7 +61,7 @@ const OuterInputWrapper = styled.div.attrs({
       rgba(0, 0, 0, 0.3) 0px -6px 9px -11px !important;
     width: 100% !important;
     border: none !important;
-    padding: 10px 15px 10px 45px !important;
+    padding: 10px 45px 10px 45px !important;
     position: relative !important;
     display: flex !important;
     align-items: center !important;
@@ -111,6 +111,7 @@ const InputOuter = ({
   type = "text",
   error = null,
   icon = null,
+  iconAfter = null,
   helperText = null,
   inputProps = {}
 }) => (
@@ -121,9 +122,11 @@ const InputOuter = ({
     ) : (
       <OuterInput {...inputProps} />
     )}
+    {iconAfter && <IconWrapper after> {iconAfter}</IconWrapper>}
     {error || helperText ? (
       <HelperText error={error}>{error || helperText}</HelperText>
     ) : null}
+    
   </OuterInputWrapper>
 );
 

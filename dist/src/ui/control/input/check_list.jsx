@@ -20,11 +20,15 @@ const CheckItemIconWrapper = styled(IconWrapper).attrs({
     top: 4px !important;
     width: 25px !important;
     height: 25px !important;
+    font-size: 24px !important;
     border-radius: 25px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     transition: ${animation.fast};
+    svg {
+        font-size: 24px !important;
+    }
     &:hover {
         transform: scale(1.2)
     }

@@ -9,24 +9,24 @@ const HeaderNavigationItem = styled.li.attrs({
  })`
   &#${APP_NAME}_HeaderNavigationItem {
     list-style: none !important;
-    margin-left: 7px !important;
+    margin:  0 0 0 7px !important;
     display: inline-flex !important;
 
     width: 40px !important;
     height: 40px !important;
-    align-items: center;
-    justify-content: center;
+    align-items: center !important;
+    justify-content: center !important;
     border-radius: 25px !important;
     cursor: pointer !important;
     &:hover {
       color: #ffffff !important;
       background-color: rgba(0,0,0,.2) !important;
       svg {
-        transform: scale(1.2)
+        transform: scale(1.2) !important;
       }
     }
     svg {
-      transition: ${animation.fast}
+      transition: ${animation.fast} !important;
     }
   }
  `

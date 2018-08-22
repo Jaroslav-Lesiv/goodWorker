@@ -26,7 +26,8 @@
     "default_icon": "/icons/icon32.png"
   },
   "web_accessible_resources": [
-    "/icons/icon64.png"
+    "/icons/icon64.png",
+    "/fonts/Roboto-Regular.ttf"
   ],
   "permissions": [
     "<all_urls>",

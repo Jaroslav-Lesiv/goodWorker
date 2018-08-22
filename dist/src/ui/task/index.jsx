@@ -6,7 +6,10 @@ import {
   Stop,
   TapAndPlay,
   Add,
+  Edit,
+  MoreVert,
   PlaylistAdd,
+  DeleteForever,
   PlaylistAddCheck,
   PlaylistPlay
 } from "@material-ui/icons";
@@ -15,9 +18,14 @@ import { Block } from "../main";
 import { toDate } from "../../helper";
 import { Link } from "react-router-dom";
 import shadows from "@material-ui/core/styles/shadows";
-import { RadioButtonChecked, RadioButtonUnchecked } from "@material-ui/icons";
+import {
+  RadioButtonChecked,
+  RadioButtonUnchecked,
+  PlayArrow
+} from "@material-ui/icons";
 import ToggleRadioButtonUnchecked from "material-ui/SvgIcon";
 import { APP_NAME } from "../../config";
+import { TaskControlList } from "../control";
 
 const TaskList = styled.ul`
   display: flex;
@@ -28,9 +36,13 @@ const TaskList = styled.ul`
 
 const Checkbox = styled(CheckboxMUI).attrs({
   icon: <RadioButtonUnchecked />,
-  checkedIcon: <RadioButtonChecked />
+  checkedIcon: <RadioButtonChecked />,
+  className: `${APP_NAME}_CheckboxMUI`
 })`
-  color: ${({ checked }) => (checked ? color.primary : color.text_color)};
+  &.${APP_NAME}_CheckboxMUI {
+    color: ${({ checked }) =>
+      checked ? color.primary : color.text_color} !important;
+  }
 `;
 
 const TaskItemUI = styled.li.attrs({
@@ -82,11 +94,18 @@ const ControlIcon = styled.button.attrs({
   className: `${APP_NAME}_ControlIcon`
 })`
   &.${APP_NAME}_ControlIcon {
-    border: none;
-    background-color: #ffffff;
+    border: none !important;
+    background-color: #ffffff !important;
+    border-radius: 50% !important;
+    width: 25px !important;
+    height: 25x !important;
     svg {
-      color:  ${color.light}
-      font-size: 35px;
+      color: ${color.primary} !important;
+      font-size: 20px !important;
+    }
+    &:hover {
+      color: #ffffff !important;
+      background-color: ${color.light} !important;
     }
   }
 `;
@@ -104,18 +123,57 @@ const TaskItem = ({
   selected,
   onActivate,
   onDone,
-  onDisable
+  onDisable,
+  onDelete = () => console.log('delete'),
+  isActive
 }) => (
   <TaskItemUI id={id}>
     <Checkbox checked={selected} onChange={onClick} value="checked" />
-    <Block direction={`column`} align={`flex-start`}>
-      <TaskLabel>{label}</TaskLabel>
-      <Block>
+    <Block
+      direction={`row`}
+      wrap={`no-wrap`}
+      position={'relative'}
+      align={`center`}
+      justify={`space-between`}
+    >
+      <Block direction={"column"} align={"flex-end"}>
+        <Link to={`/edit/${id}`}>
+          <TaskLabel>{label}</TaskLabel>
+        </Link>
+      </Block>
+
+      <Block direction={"column"} align={"flex-end"}>
+        {isActive ? (
+          <ControlIcon onClick={onDisable} aria-label="stop">
+            <Stop />
+          </ControlIcon>
+        ) : (
+          <ControlIcon onClick={onActivate} aria-label="add">
+            <PlayArrow />
+          </ControlIcon>
+        )}
         <TimeUI>
           {toDate(spend_time)} / {toDate(plain_time)}
         </TimeUI>
+      </Block>
 
-        <Block justify={`flex-end`}>
+      <TaskControlList
+        options={[
+          {
+            icon: <Edit />,
+            label: <Link to={`/edit/${id}`}>"Change task"</Link>,
+          },
+          {
+          },
+          {
+            icon: <DeleteForever />,
+            label: "Delete task",
+            onClick: () => onDelete(),
+          }
+        ]}
+      />
+
+      {/* <Block justify={`flex-end`}>
           <ControlIcon onClick={onDone} aria-label="done">
             <PlaylistAddCheck />
           </ControlIcon>
@@ -125,8 +183,8 @@ const TaskItem = ({
           <ControlIcon onClick={onDisable} aria-label="stop">
             <Stop />
           </ControlIcon>
-        </Block>
-      </Block>
+        </Block> */}
+      {/* </Block> */}
       {/* <TaskDescription>{validate(description)}</TaskDescription> */}
     </Block>
     {/* <Block direction={`column`} align={`flex-end`}> */}
@@ -180,12 +238,14 @@ const DoneTaskItem = ({
     />
     <Block direction={`column`}>
       <TaskLabel>
-        {label} {toDate(spend_time)} {toDate(plain_time)}
+        {label}
+        <TimeUI>
+          {toDate(spend_time)} / {toDate(plain_time)}
+        </TimeUI>
       </TaskLabel>
-      <TaskDescription>{validate(description)}</TaskDescription>
+      {/* <TaskDescription>{validate(description)}</TaskDescription> */}
     </Block>
 
-    {/* TODO: remove from done onClick */}
     <Button
       variant="fab"
       mini
@@ -205,10 +265,19 @@ const TimeUI = styled.div`
   display: flex;
   align-items: center;
   border-radius: 25px;
-  padding: 2px 12px;
+  padding: 0 7.5px;
   font-weight: 600;
   line-height: 2;
   box-shadow: ${shadows["2"]};
+  width: max-content;
+  min-width: 140px;
 `;
 
-export { TaskList, TaskItem, DoneTaskItem, TimeUI, CreateNewTaskItem };
+export {
+  TaskList,
+  TaskItem,
+  DoneTaskItem,
+  TimeUI,
+  CreateNewTaskItem,
+  Checkbox
+};

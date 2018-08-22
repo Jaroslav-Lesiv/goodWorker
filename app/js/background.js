@@ -131,6 +131,12 @@ const Task = new class {
     storage.set("task_list", [...task_list, { ...task, id: +new Date(), created_at: +new Date() }]);
   }
 
+  async getTask(_id, sender) {
+    const task_list = await storage.get("task_list", []);
+    const task = task_list.find(_task => _task.id === +_id)
+    sender(task)
+  }
+
   async getTaskList(sender) {
     const task_list = await storage.get("task_list", []);
     sender(task_list);
@@ -149,6 +155,8 @@ const Task = new class {
     const task_list = await storage.get("task_list", []);
     const taskIdx = task_list.findIndex(task => task.id == _task.id);
     if (~taskIdx) task_list[taskIdx] = { ...task_list[taskIdx], ..._task };
+
+    console.log(~taskIdx, task_list[taskIdx])
     storage.set("task_list", task_list);
   }
 
@@ -226,6 +234,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       Task.deleteTask(request.data);
       break;
     case "update_task":
+      console.log('update_task', request.data)
       Task.updateTask(request.data);
       break;
     case "done_task":
@@ -246,6 +255,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       break;
     case "disable_task":
       Task.stopTimer();
+      break;
+
+    case "get_task":
+      Task.getTask(request.data, sendResponse);
       break;
 
       

@@ -22,7 +22,9 @@ const Align = styled(FlexWrap)`
   justify-content: ${({ justify }) => justify || "space-around"};
 `;
 
-const Block = styled(Align)``;
+const Block = styled(Align)`
+  position: ${({ position }) => position || "static"};
+`;
 
 const BlockFormUI = Block.withComponent("form");
 const MainUI = Block.withComponent("main");

@@ -21,7 +21,9 @@ const TimeInputUI = styled(OuterInput).attrs({
 &.${APP_NAME}_TimeInputUI {
   max-width: 50px !important;
   min-width: 40px !important;
-  margin: 0 5px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
 }
   
 `;

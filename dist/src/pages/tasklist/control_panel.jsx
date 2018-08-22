@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { task } from "../../redux/actions";
-import {  Block } from "../../ui";
+import {  Block, Checkbox } from "../../ui";
+import { color } from '../../ui/variables'
 import { Typography } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+// import Checkbox from "@material-ui/core/Checkbox";
 
 const mapStateToProps = ({ task }) => ({
   task_list: task.list,
@@ -37,6 +38,7 @@ export class TaskControl extends Component {
         <FormControlLabel
           control={
             <Checkbox
+              style={{ color: color.primary }}
               checked={selectedAll}
               onChange={
                 selectedAll
@@ -44,7 +46,6 @@ export class TaskControl extends Component {
                   : this.props.selectAll
               }
               value="checkedAll"
-              color="primary"
             />
           }
           label={selectedAll ? `Remove All` : `Select All`}

@@ -2,6 +2,8 @@ export const task = {
   list: [],
   done_list: [],
   selected: [],
+  done_selected: [],
+  current: {},
   active: {
     id: null,
     spend_time: 0,

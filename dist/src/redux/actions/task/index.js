@@ -10,6 +10,7 @@ export const { task } = createActions({
 
       TASK_SET_ONE: payload => payload,
       TASK_SELECT: payload => payload,
+      TASK_DONE_SELECT: payload => payload,
 
       DELETE_TASK: payload => payload,
       DELETE_ONE_TASK: payload => payload,
@@ -19,6 +20,9 @@ export const { task } = createActions({
 
       SELECT_ALL: payload => payload,
       UNSELECT_ALL: payload => payload,
+      
+      SELECT_ALL_DONE: payload => payload,
+      UNSELECT_ALL_DONE: payload => payload,
 
       ACTIVATE_TASK: payload => payload,
       DISABLE_TASK: payload => payload,
@@ -30,6 +34,10 @@ export const { task } = createActions({
       UPDATE_TASK: payload => payload,
       DONE_TASK: payload => payload,
       REMOVE_FROM_DONE_TASK: payload => payload,
-      GET_TASK_LIST: payload => payload
+      GET_TASK_LIST: payload => payload,
+
+      GET_TASK: payload => payload,
+      CLEAR_CURRENT: payload => payload,
+      SET_CURRENT: payload => payload
   }
 })

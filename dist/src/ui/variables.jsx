@@ -10,6 +10,10 @@ const typography = {
     h1: 30
 }
 
+const font = {
+    default: 'Roboto'
+}
+
 const animation = {
     fast: '0.2s',
     middle: '0.4s'
@@ -41,5 +45,6 @@ export {
     animation,
     typography,
     header,
-    app
+    app,
+    font
 }

@@ -9,7 +9,8 @@ import TaskControl from "./control_panel";
 
 const mapStateToProps = ({ task }) => ({
   task_list: task.list,
-  selected_task: task.selected
+  selected_task: task.selected,
+  activeTask: task.active
 });
 
 const mapDispatchToProps = {
@@ -47,10 +48,11 @@ export class TaskPages extends Component {
   onDisable = _id => this.props.disableTask(_id);
 
   render() {
-    const { task_list, selected_task } = this.props;
+    const { task_list, selected_task, activeTask } = this.props;
+    console.log(activeTask, task_list)
     return (
       <Block align={`flex-start`}>
-        <TaskControl />
+        <TaskControl list={task_list} selected={selected_task} />
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
           <TaskList>
             {task_list.map(task => (
@@ -59,6 +61,8 @@ export class TaskPages extends Component {
                 label={task.label}
                 selected={selected_task.includes(task.id)}
                 id={task.id}
+
+                isActive={activeTask.id === task.id}
                 
                 onDone={() => this.doneTask(task.id)}
                 onClick={() => this.selectTask(task.id)}

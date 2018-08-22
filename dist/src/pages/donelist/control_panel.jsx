@@ -2,23 +2,20 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { task } from "../../redux/actions";
-import {  Block } from "../../ui";
+import {  Block, Checkbox } from "../../ui";
 import { Typography } from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-
-const mapStateToProps = ({ task }) => ({
-  task_list: task.list,
-  selected_task: task.selected
-});
+// import Checkbox from "@material-ui/core/Checkbox";
 
 const mapDispatchToProps = {
   selectAll: task.selectAll,
-  unselectAll: task.unselectAll
+  selectAllDone: task.selectAllDone,
+  unselectAll: task.unselectAll,
+  unselectAllDone: task.unselectAllDone
 };
 
 @connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )
 export class TaskControl extends Component {
@@ -26,9 +23,20 @@ export class TaskControl extends Component {
     prop: PropTypes
   };
 
+  selectAll = () => {
+    const { type } = this.props
+    type === 'done' ? this.props.selectAllDone() : this.props.selectAll()
+  }
+
+  unselectAll = () => {
+    const { type } = this.props
+    type === 'done' ? this.props.unselectAllDone() : this.props.unselectAll()
+
+  }
+
   render() {
-    const { task_list, selected_task } = this.props;
-    const selectedAll = selected_task.length === task_list.length
+    const { list, selected, } = this.props;
+    const selectedAll = selected.length === list.length
     return (
       <Block align={`center`} justify={`space-between`}>
         
@@ -40,19 +48,18 @@ export class TaskControl extends Component {
               checked={selectedAll}
               onChange={
                 selectedAll
-                  ? this.props.unselectAll
-                  : this.props.selectAll
+                  ? this.unselectAll
+                  : this.selectAll
               }
               value="checkedAll"
-              color="primary"
             />
           }
           label={selectedAll ? `Remove All` : `Select All`}
         />
 
 
-        {selected_task.length > 0 ? (
-          <Typography>Selected {selected_task.length}</Typography>
+        {selected.length > 0 ? (
+          <Typography>Selected {selected.length}</Typography>
         ) : null}
       </Block>
     );

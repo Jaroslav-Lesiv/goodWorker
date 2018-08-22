@@ -9,11 +9,11 @@ import TaskControl from "./control_panel";
 
 const mapStateToProps = ({ task }) => ({
   done_list: task.done_list,
-  selected_task: task.selected
+  selected_task: task.done_selected
 });
 
 const mapDispatchToProps = {
-  taskSelect: task.taskSelect,
+  taskSelect: task.taskDoneSelect,
   getDoneList: task.getDoneList,
   removeFromDoneTask: task.removeFromDoneTask
 };
@@ -41,7 +41,7 @@ export class DonePages extends Component {
     const { done_list, selected_task } = this.props;
     return (
       <Block align={`flex-start`}>
-        <TaskControl />
+        <TaskControl type={`done`} list={done_list} selected={selected_task} />
         <Slide direction="left" in={true} mountOnEnter unmountOnExit>
           <TaskList>
             {done_list.map(task => (

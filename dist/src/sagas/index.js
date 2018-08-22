@@ -27,9 +27,9 @@ function* fetchAddTaskWorker() {
 function* fetchDeleteTaskWorker() {
 	yield takeEvery(action.task.deleteTask, background.deleteTask)
 }
-// function* fetchUpdateTaskWorker() {
-// 	yield takeEvery(action.task.updateTask, background.updateTask)
-// }
+function* fetchUpdateTaskWorker() {
+	yield takeEvery(action.task.updateTask, background.updateTask)
+}
 function* fetchActivateTaskWorker() {
 	yield takeEvery(action.task.activateTask, background.activateTask)
 }
@@ -56,6 +56,10 @@ function* removeFromDoneTask() {
 	yield takeEvery(action.task.removeFromDoneTask, background.removeFromDoneTask)
 }
 
+function* getTask() {
+	yield takeEvery(action.task.getTask, background.getTask)
+}
+
 window.addEventListener('focus', async () => {
     const task_list = await cmd.doSet({ cmd: `get_task_list`})
     store.dispatch(action.task.taskListSet(task_list))
@@ -67,14 +71,15 @@ export default function* rootSaga() {
 
 		fetchAddTaskWorker(),
 		fetchDeleteTaskWorker(),
-		// fetchUpdateTaskWorker(),
+		fetchUpdateTaskWorker(),
 		fetchActivateTaskWorker(),
 		fetchDisableTaskWorker(),
 		fetchGetTaskList(),
 		fetchUpdateActiveTask(),
 		fetchGetDoneList(),
 		fetchDoneTask(),
-		removeFromDoneTask()
+		removeFromDoneTask(),
+		getTask()
 
 	])
   }

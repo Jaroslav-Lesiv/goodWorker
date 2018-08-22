@@ -1,4 +1,4 @@
-import { OuterInputWrapper, OuterInput, IconWrapper, HelperText } from "./index";
+import { OuterInputWrapper, OuterInput, IconWrapper, HelperText } from ".";
 import styled from "styled-components";
 import { APP_NAME } from "../../../config";
 import React from "react";

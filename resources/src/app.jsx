@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 import { RootRouter } from './router';
 import { Wrapper, Main } from './ui';
 import { connect } from 'react-redux';

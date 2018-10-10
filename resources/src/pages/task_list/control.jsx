@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import { Input, ClickedIcon, Container } from '../../ui';
-import {
-	ViewList,
-	PlaylistAddCheck
-} from '@material-ui/icons';
-
+import { ViewList, PlaylistAddCheck } from '@material-ui/icons';
+import { connect } from 'react-redux';
+import { task } from '../../redux/actions';
 const ControlWrapper = styled(Container)`
 	& > :first-child {
 		/* padding-left: 0; */
@@ -24,25 +22,38 @@ const ToogledButtonWrapper = styled.div`
 
 export class TaskListControl extends Component {
 	static propTypes = {
-		onSelect: PropTypes.func,
-		active: PropTypes.string
+		selectCurrentList: PropTypes.func,
+		activeList: PropTypes.string
 	};
 
 	state = {
 		search: '',
-		active: 0,
-		filters: []
+		filters: [],
+		taskButtons: [
+			{ name: 'avaibleList', icon: <ViewList /> },
+			{ name: 'doneList', icon: <PlaylistAddCheck /> }
+		]
 	};
 
 	handleChange = name => event => {
 		this.setState({ [name]: event.target.value });
 	};
 
-	setActive = id => this.setState({ active: id });
+	renderTaskControlButtons = () =>
+		this.state.taskButtons.map(button => (
+			<ClickedIcon
+				key={button.name}
+				size={20}
+				padding={'12.5px'}
+				margin={'1px'}
+				onClick={() => this.props.selectCurrentList(button.name)}
+				icon={button.icon}
+				active={this.props.activeList === button.name}
+			/>
+		));
 
 	render() {
 		const { search } = this.state;
-		const { onSelect, active } = this.props;
 		return (
 			<ControlWrapper>
 				<Input
@@ -55,28 +66,24 @@ export class TaskListControl extends Component {
 				/>
 
 				<ToogledButtonWrapper>
-					<ClickedIcon
-						size={20}
-						// disabled
-						padding={'12.5px'}
-						margin={'1px'}
-						onClick={() => onSelect('task_list')}
-						icon={<ViewList />}
-						active={active === 'task_list'}
-					/>
-					<ClickedIcon
-						size={20}
-						// disabled
-						padding={'12.5px'}
-						margin={'1px'}
-						onClick={() => onSelect('done_list')}
-						icon={<PlaylistAddCheck />}
-						active={active === 'done_list'}
-					/>
+					{this.renderTaskControlButtons()}
 				</ToogledButtonWrapper>
 			</ControlWrapper>
 		);
 	}
 }
 
-export default withRouter(TaskListControl);
+const mapStateToProps = ({ task }) => ({
+	activeList: task.activeList
+});
+
+const mapDispatchToProps = {
+	selectCurrentList: task.selectCurrentList
+};
+
+export default withRouter(
+	connect(
+		mapStateToProps,
+		mapDispatchToProps
+	)(TaskListControl)
+);

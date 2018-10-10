@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import { navigation, color } from '../';
 import { NavLink } from 'react-router-dom';
+import config from '../../config';
 
 const NavigationWrapper = styled.header`
 	display: flex;
 	flex-direction: column;
 	padding: 0;
 	background-color: ${color.primary};
-	height: 100vh;
+	height: ${config.APP_HEIGHT}px;
 	justify-content: flex-start;
 	align-items: center;
 	box-shadow: 1px 0 5px 0 rgba(0, 0, 0, 0.4);

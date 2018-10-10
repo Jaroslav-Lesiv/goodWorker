@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { RootRouter } from './router';
-import { Wrapper, Main } from './ui';
+import { Wrapper, Main, PageWrapper } from './ui';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,7 +17,7 @@ class App extends Component {
 		start: PropTypes.func,
 		isLogin: PropTypes.bool
 	};
-	componentWillMount = () => {
+	componentDidMount = () => {
 		this.props.start();
 	};
 	render() {
@@ -29,7 +29,9 @@ class App extends Component {
 				<Navigation isLogin={isLogin} />
 				<Main>
 					<Header />
-					<RootRouter isLogin={isLogin} />
+					<PageWrapper>
+						<RootRouter isLogin={isLogin} />
+					</PageWrapper>
 				</Main>
 			</Wrapper>
 		);

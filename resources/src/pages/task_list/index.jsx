@@ -40,9 +40,10 @@ export class HomePage extends Component {
 
 	render() {
 		const { activeList } = this.props;
+		console.log(activeList);
 		return (
 			<PageSection>
-				<TaskListControl active={activeList} onSelect={this.onSelect} />
+				<TaskListControl onSelect={this.onSelect} />
 
 				{activeList === 'avaibleList'
 					? this.renderAvaibleList()

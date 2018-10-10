@@ -136,6 +136,7 @@
     "extends": "react-app"
   },
   "dependencies": {
-    "active-window": "^0.1.0"
+    "active-window": "^0.1.0",
+    "electron-store": "^2.0.0"
   }
 }

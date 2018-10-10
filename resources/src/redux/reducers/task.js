@@ -4,14 +4,19 @@ import initialState from '../store/initialState';
 
 export default handleActions(
 	{
-		[task.taskList.request.success]: (store, { payload }) => ({
+		[task.avaibleList.request.success]: (store, { payload }) => ({
 			...store,
-			task_list: payload
+			avaibleList: payload
 		}),
 
 		[task.doneList.request.success]: (store, { payload }) => ({
 			...store,
-			done_list: payload
+			doneList: payload
+		}),
+
+		[task.selectCurrentList]: (store, { payload }) => ({
+			...store,
+			activeList: payload
 		})
 	},
 	initialState.task

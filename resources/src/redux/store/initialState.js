@@ -10,42 +10,42 @@ export default {
 		isLogin: false,
 		username: ''
 	},
-	currentTask: {
-		// bu task id, id = timestamp start date
-		id: 234567890,
-		name: 'Not long task name',
-		descripton:
-			'task description lorem10 sdfnljfvnlasnfvl nldfvl jmj;doifvoln ; ;oijdz;ndckjdn ljnzdflknl nldfnli',
-		// owners - owners user id
-		owners: [3, 4],
-		created_by: 1,
-		// 1 - backlog, 2 - in progress , 3 - QA, 4 - done
-		status: 1,
-		history: [
-			{
-				// start & end - timestamp
-				start: 1876543,
-				end: 9876543,
-				// worker_on description what i doing
-				worked_on: '',
-				track: [
-					// spend-time in seconds
-					{ app_name: 34567 }
-				]
-			}
-		]
-	},
 	task: {
 		activeList: 'avaibleList',
+		activeTask: {
+			// bu task id, id = timestamp start date
+			id: 234567890,
+			name: 'Not long task name',
+			descripton:
+				'task description lorem10 sdfnljfvnlasnfvl nldfvl jmj;doifvoln ; ;oijdz;ndckjdn ljnzdflknl nldfnli',
+			// owners - owners user id
+			owners: [3, 4],
+			created_by: 1,
+			// 1 - backlog, 2 - in progress , 3 - QA, 4 - done
+			status: 1,
+			history: [
+				{
+					// start & end - timestamp
+					start: 1876543,
+					end: 9876543,
+					// worker_on description what i doing
+					worked_on: '',
+					track: [
+						// spend-time in seconds
+						{ app_name: 34567 }
+					]
+				}
+			]
+		},
 		avaibleList: [
 			{
 				id: 2345234,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
+				label: 'Avaible list do somthin for many babosiki. Dcfrbv es EFSVDV',
 				description:
 					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
 			},
 			{
-				id: 234523445,
+				id: 234567890,
 				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
 				description:
 					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
@@ -78,8 +78,8 @@ export default {
 		],
 		doneList: [
 			{
-				id: 23452334564,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
+				id: 234567890,
+				label: 'Done list jdcnskjn',
 				description:
 					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
 			},

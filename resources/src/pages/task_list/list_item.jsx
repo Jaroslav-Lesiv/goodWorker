@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
 	TaskWrapper,
 	TaskName,
@@ -8,17 +8,21 @@ import {
 	ClickedIcon,
 	Block
 } from '../../ui';
-import { Check, DeleteForever, PlayArrow } from '@material-ui/icons';
+import { Check, PlayArrow } from '@material-ui/icons';
 import { Grow } from '@material-ui/core';
 import * as utils from '../../utils';
 import PropTypes from 'prop-types';
+import { task } from '../../redux/actions';
+import { connect } from 'react-redux';
 
-export default class TaskItem extends Component {
+class TaskItem extends React.PureComponent {
 	static propTypes = {
 		label: PropTypes.string,
 		description: PropTypes.string,
 		id: PropTypes.number,
-		onActivate: PropTypes.func
+		currentTaskID: PropTypes.number,
+		onActivate: PropTypes.func,
+		doneTask: PropTypes.func
 	};
 
 	static defaultProps = {
@@ -33,6 +37,10 @@ export default class TaskItem extends Component {
 		};
 	}
 
+	doneTask = () => this.props.doneTask(this.props.id);
+
+	checkActiveTask = () => this.props.currentTaskID === this.props.id;
+
 	onActivate = () => this.props.onActivate(this.props.id);
 
 	setHover = bool => this.setState({ isHovered: bool });
@@ -46,7 +54,9 @@ export default class TaskItem extends Component {
 				onMouseLeave={() => this.setHover(false)}
 			>
 				<TaskinfoBlock>
-					<TaskName to={`task/${id}`}>{utils.overflowTaskLabel(label)}</TaskName>
+					<TaskName to={`task/${id}`}>
+						{utils.overflowTaskLabel(label)}
+					</TaskName>
 					<TaskDescription>
 						{utils.overflowTaskDescription(description)}
 					</TaskDescription>
@@ -57,6 +67,7 @@ export default class TaskItem extends Component {
 							<ClickedIcon
 								onClick={this.setActiveTask}
 								size={17}
+								disabled={this.checkActiveTask()}
 								circle
 								margin={'0 0 0 3.5px'}
 								active={true}
@@ -66,7 +77,7 @@ export default class TaskItem extends Component {
 						</Grow>
 						<Grow in={isHovered}>
 							<ClickedIcon
-								onClick={() => this.setActive(0)}
+								onClick={this.doneTask}
 								size={17}
 								circle
 								margin={'0 0 0 3.5px'}
@@ -75,19 +86,22 @@ export default class TaskItem extends Component {
 								status={'active'}
 							/>
 						</Grow>
-						<Grow in={isHovered}>
-							<ClickedIcon
-								onClick={() => this.setActive(0)}
-								size={17}
-								margin={'0 0 0 3.5px'}
-								circle
-								active={false}
-								icon={<DeleteForever />}
-							/>
-						</Grow>
 					</Block>
 				</TaskControlBlock>
 			</TaskWrapper>
 		);
 	}
 }
+
+const mapStateToProps = ({ task }) => ({
+	currentTaskID: task.activeTask.id
+});
+
+const mapDispatchToProps = {
+	doneTask: task.doneTask
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TaskItem);

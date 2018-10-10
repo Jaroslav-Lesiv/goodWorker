@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import logo from '../../logo.svg';
-import { navigation } from '../variables';
+// import { navigation } from '../variables';
+import config from '../../config';
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
@@ -8,13 +9,14 @@ const spin = keyframes`
 `;
 const Wrapper = styled.div`
 	display: flex;
-	width: 500px;
-	height: 600px;
+	width: ${config.APP_WIDTH}px;
+	height: ${config.APP_HEIGHT}px;
 	overflow: hidden;
 	border: 1px solid red;
 	margin: 0 auto;
 	justify-content: flex-start;
 	align-items: flex-start;
+	box-shadow: -6px 0 50px 0 rgba(0, 0, 0, 0.4), 2px 0 50px 0 rgba(0, 0, 0, 0.4);
 `;
 const Main = styled.div`
 	display: flex;
@@ -24,10 +26,16 @@ const Main = styled.div`
 	align-items: flex-start;
 `;
 
+const PageWrapper = styled.section`
+	display: flex;
+	justify-content: center;
+	alight-items: center;
+	flex: 1;
+`;
+
 const Section = styled.div`
 	display: flex;
 	flex-grow: 1;
-	min-height: calc(100vh - ${navigation.width}px);
 	flex-direction: column;
 `;
 
@@ -64,4 +72,13 @@ const TaskListWrapper = styled(Container)`
 		border-bottom: none;
 	}
 `;
-export { Wrapper, Main, Logo, Block, Section, Container, TaskListWrapper };
+export {
+	Wrapper,
+	Main,
+	Logo,
+	Block,
+	Section,
+	Container,
+	TaskListWrapper,
+	PageWrapper
+};

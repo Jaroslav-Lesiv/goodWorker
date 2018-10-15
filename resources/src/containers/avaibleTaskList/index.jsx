@@ -24,7 +24,14 @@ export class AvaibleTaskList extends Component {
 		return (
 			<TaskListWrapper shadow>
 				{this.props.avaibleList.map(task => (
-					<AvaibleTaskListItemContainer key={task.id} {...task} />
+					<AvaibleTaskListItemContainer
+						modifications={{
+							link: true,
+							hover: true
+						}}
+						key={task.id}
+						{...task}
+					/>
 				))}
 			</TaskListWrapper>
 		);

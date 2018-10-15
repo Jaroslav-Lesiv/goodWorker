@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { PageSection } from '../../components/common/pageWrapper';
+import AvaibleTaskList from '../../containers/avaibleTaskList';
+import DoneTaskList from '../../containers/doneTaskList';
 import TaskListControl from './control';
-import TaskItem from './list_item';
-import { TaskListWrapper } from '../../ui';
+// import TaskItem from './list_item';
+// import { TaskListWrapper } from '../../ui';
 import { task } from '../../redux/actions';
 
 export class HomePage extends Component {
@@ -22,33 +24,32 @@ export class HomePage extends Component {
 
 	onSelect = id => this.setState({ active: id });
 
-	renderAvaibleList = () => (
-		<TaskListWrapper shadow>
-			{this.props.avaibleList.map(task => (
-				<TaskItem key={task.id} {...task} />
-			))}
-		</TaskListWrapper>
-	);
+	// renderAvaibleList = () => (
+	// 	<TaskListWrapper shadow>
+	// 		{this.props.avaibleList.map(task => (
+	// 			<TaskItem key={task.id} {...task} />
+	// 		))}
+	// 	</TaskListWrapper>
+	// );
 
-	renderDoneList = () => (
-		<TaskListWrapper shadow>
-			{this.props.doneList.map(task => (
-				<TaskItem key={task.id} {...task} />
-			))}
-		</TaskListWrapper>
-	);
+	// renderDoneList = () => (
+	// 	<TaskListWrapper shadow>
+	// 		{this.props.doneList.map(task => (
+	// 			<TaskItem key={task.id} {...task} />
+	// 		))}
+	// 	</TaskListWrapper>
+	// );
 
 	render() {
 		const { activeList } = this.props;
-		console.log(activeList);
 		return (
 			<PageSection>
 				<TaskListControl onSelect={this.onSelect} />
 
 				{activeList === 'avaibleList'
-					? this.renderAvaibleList()
+					? <AvaibleTaskList />
 					: activeList === 'doneList'
-						? this.renderDoneList()
+						? <DoneTaskList />
 						: null}
 			</PageSection>
 		);

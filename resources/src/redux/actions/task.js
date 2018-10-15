@@ -19,5 +19,7 @@ export const { task } = createActions({
 		SELECT_CURRENT_LIST: payload => payload,
 		START: payload => payload,
 		DONE_TASK: payload => payload,
+		BACK_TASK: payload => payload,
+		SELECT_TASK: payload => payload
 	}
 });

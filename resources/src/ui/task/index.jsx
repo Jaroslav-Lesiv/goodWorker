@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { color } from '../';
-import { Link } from 'react-router-dom';
 import { Block } from '../main';
 
 const TaskWrapper = styled.div`
@@ -13,7 +12,7 @@ const TaskWrapper = styled.div`
 	border-bottom: 1px solid ${color.light};
 `;
 
-const TaskName = styled(Link)`
+const TaskName = styled.span`
 	color: ${color.textColor};
 	line-height: 23px;
 	font-size: 15px;
@@ -42,7 +41,7 @@ const TaskDescription = styled.p`
         color: ${color.primary};
     } */
 `;
-const TaskinfoBlock = styled(Block)`
+const TaskInfoBlock = styled(Block)`
 	flex-grow: 4;
 	flex-direction: column;
 `;
@@ -59,6 +58,6 @@ export {
 	TaskWrapper,
 	TaskName,
 	TaskDescription,
-	TaskinfoBlock,
+	TaskInfoBlock,
 	TaskControlBlock
 };

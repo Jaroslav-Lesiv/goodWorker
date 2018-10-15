@@ -18,8 +18,22 @@ function* appStartedWorker() {
 function* fetchDoneTask() {
 	yield takeLatest(action.task.doneTask, task.moveTaskToDone);
 }
+
+function* fetchGetAvaibleList() {
+	yield takeLatest(
+		action.task.avaibleList.request.pending,
+		task.getAvaibleList
+	);
+}
+
+function* fetchGetDoneList() {
+	yield takeLatest(
+		action.task.doneList.request.pending,
+		task.getDoneList
+	);
+}
 // TASK END
 
 export default function* rootSaga() {
-	yield all([appStartedWorker(), userLoginWorker(), fetchDoneTask()]);
+	yield all([appStartedWorker(), userLoginWorker(), fetchDoneTask(), fetchGetAvaibleList(), fetchGetDoneList()]);
 }

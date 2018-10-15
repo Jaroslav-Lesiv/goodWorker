@@ -33,7 +33,8 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 		history: PropTypes.object,
 		selectTask: PropTypes.func,
 		modifications: PropTypes.shape({
-			link: PropTypes.bool
+			link: PropTypes.bool,
+			hover: PropTypes.bool
 		})
 	};
 
@@ -62,20 +63,21 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 	setHover = bool => this.setState({ isHovered: bool });
 
 	onSelect = () => {
-		const { label, description, id } = this.props;
-		this.props.selectTask({ label, description, id });
-		this.props.history.push(`task/${this.props.id}`);
+		const { label, description, id, priority, status } = this.props;
+		this.props.selectTask({ label, description, id, priority, status });
+		this.props.history.push(`task/${id}`);
 	};
 
 	render() {
 		const { isHovered } = this.state;
 		const { label, description, priority, status, modifications } = this.props;
-		const { link } = modifications;
+		const { link, hover } = modifications;
 		const activeTask = this.checkActiveTask();
+		const isShowControl = !hover || isHovered;
 		return (
 			<TaskWrapper
-				onMouseEnter={() => this.setHover(true)}
-				onMouseLeave={() => this.setHover(false)}
+				onMouseEnter={hover ? () => this.setHover(true) : undefined}
+				onMouseLeave={hover ? () => this.setHover(false) : undefined}
 			>
 				<Block direction={'column'}>
 					<TaskInfoBlock>
@@ -94,7 +96,7 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 				<Block>
 					<TaskControlBlock>
 						<Block direction={'row'} justify={'flex-end'}>
-							<Grow in={isHovered}>
+							<Grow in={isShowControl}>
 								<ClickedIcon
 									onClick={activeTask ? this.stopTask : this.activateTask}
 									size={17}
@@ -105,7 +107,7 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 									status={'active'}
 								/>
 							</Grow>
-							<Grow in={isHovered}>
+							<Grow in={isShowControl}>
 								<ClickedIcon
 									onClick={this.doneTask}
 									size={17}

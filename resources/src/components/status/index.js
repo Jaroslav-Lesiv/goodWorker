@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styledComponentsCjs from 'styled-components';
-import { task } from '../../constants';
+import { TASK } from '../../constants';
 
 const Status = styledComponentsCjs.span`
 	width: 7px;
 	height: 7px;
 	border-radius: 50%;
 	margin: 5px;
-	background-color: ${({ status }) => task.status[status]};
+	background-color: ${({ status }) => TASK.status[status]};
 `;
 export default class StatusComponent extends Component {
 	static propTypes = {

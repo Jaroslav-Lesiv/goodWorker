@@ -1,50 +1,52 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import logo from '../../logo.svg';
-import redux from '../../redux.svg';
-import electron from '../../electron.svg';
-import { withRouter } from 'react-router';
+import { Container } from '../../ui';
 import { PageSection } from '../../components/common/pageWrapper';
+import AvaibleTaskListItemContainer from '../../containers/avaibleTaskListItem';
 
-export class HomePage extends Component {
+export class TaskPage extends Component {
 	static propTypes = {
-		user: PropTypes.object
+		label: PropTypes.string,
+		description: PropTypes.string,
+		id: PropTypes.number,
+		priority: PropTypes.number,
+		status: PropTypes.number
 	};
 
 	render() {
-		const { user } = this.props;
-		const { username } = user;
+		const { label, description, id, priority, status } = this.props;
 		return (
 			<PageSection>
-				<div className="App">
-					<header className="App-header">
-						<img src={logo} className="App-logo" alt="logo" />
-						<img src={redux} className="App-logo" alt="logo" />
-						<img src={electron} className="App-logo" alt="logo" />
-						<h1 className="App-title">Hi {username}</h1>
-						<h1 className="App-title">Welcome to Electron React Redux App</h1>
-					</header>
-					<p className="App-intro">
-						To get started, edit <code>src/App.js</code> and save.
-					</p>
-					<p>created by Jaroslav Lesiv</p>
-					<p>v 0.0.1</p>
-				</div>
+				<Container shadow>
+					<AvaibleTaskListItemContainer
+						label={label}
+						description={description}
+						id={id}
+						priority={priority}
+						status={status}
+						modifications={{
+							link: false,
+							hover: false
+						}}
+					/>
+				</Container>
 			</PageSection>
 		);
 	}
 }
 
-const mapStateToProps = ({ user }) => ({
-	user
+const mapStateToProps = ({ task }) => ({
+	id: task.selectedTask.id,
+	status: task.selectedTask.status,
+	priority: task.selectedTask.priority,
+	label: task.selectedTask.label,
+	description: task.selectedTask.description
 });
 
 const mapDispatchToProps = {};
 
-export default withRouter(
-	connect(
-		mapStateToProps,
-		mapDispatchToProps
-	)(HomePage)
-);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TaskPage);

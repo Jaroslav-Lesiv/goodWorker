@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Block } from '../../ui';
 import { Flag, FlagOutlined } from '@material-ui/icons';
+import { TASK } from '../../constants';
 
-let priorType = [1, 2, 3, 4, 5];
 export default class PriorityComponent extends Component {
 	static propTypes = {
 		priority: PropTypes.number,
@@ -16,7 +16,7 @@ export default class PriorityComponent extends Component {
 		const { priority, size } = this.props;
 		return (
 			<Block>
-				{priorType.map(
+				{Object.keys(TASK.PRIORITY).map(
 					(type, idx) =>
 						type <= priority ? (
 							<Flag key={idx} fontSize={size || 'small'} />

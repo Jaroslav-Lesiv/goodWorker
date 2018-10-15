@@ -12,6 +12,13 @@ export default {
 	},
 	task: {
 		activeList: 'avaibleList',
+		selectedTask: {
+			id: null,
+			description: '',
+			label: '',
+			status: 0,
+			priority: null
+		},
 		activeTask: {
 			// bu task id, id = timestamp start date
 			id: 234567890,
@@ -37,71 +44,7 @@ export default {
 				}
 			]
 		},
-		avaibleList: [
-			{
-				id: 2345234,
-				label: 'Avaible list do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			},
-			{
-				id: 234567890,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			},
-			{
-				id: 2345234765,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			},
-
-			{
-				id: 2345234456,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			},
-			{
-				id: 2345234721,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			},
-			{
-				id: 234523487123,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			}
-		],
-		doneList: [
-			{
-				id: 234567890,
-				label: 'Done list jdcnskjn',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			},
-
-			{
-				id: 23452343456,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			},
-			{
-				id: 23452334564,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			},
-			{
-				id: 234523476567,
-				label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-				description:
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
-			}
-		]
+		avaibleList: [],
+		doneList: []
 	}
 };

@@ -34,7 +34,7 @@ class Navigation extends Component {
 							icon={<Timer />}
 						/>
 						<NavigationItem
-							to={'/task_list'}
+							to={'/taskList'}
 							title={'TASK LIST'}
 							icon={<ListAlt />}
 						/>

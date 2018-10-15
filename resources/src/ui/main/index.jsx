@@ -24,13 +24,23 @@ const Main = styled.div`
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: flex-start;
+	height: ${config.APP_HEIGHT}px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	&::-webkit-scrollbar {
+		width: 5px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #666;
+	}
 `;
 
 const PageWrapper = styled.section`
 	display: flex;
 	justify-content: center;
-	alight-items: center;
+	align-items: flex-start;
 	flex: 1;
+	height: ${config.APP_HEIGHT - config.NAVIGATION.HEIGHT}px;
 `;
 
 const Section = styled.div`

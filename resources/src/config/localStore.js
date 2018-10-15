@@ -1,18 +1,25 @@
 // import Store from 'electron-store';
 
 // const localStore = new Store({ encryptionKey: 'test' });
+import { avaibleList, doneList } from './mockData';
 
 const mockStore = class {
+	init() {
+		this.set('avaibleList', avaibleList);
+		this.set('doneList', doneList);
+	}
+	
 	get(name) {
-		return localStorage.getItem(name);
+		const json = localStorage.getItem(name);
+		return JSON.parse(json);
 	}
 
 	set(name, value) {
-		localStorage.setItem(name, value);
+		const json = JSON.stringify(value);
+		localStorage.setItem(name, json);
 	}
 };
 
 const store = new mockStore();
-console.log(process.env);
 
 export default store;

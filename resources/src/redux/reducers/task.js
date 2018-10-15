@@ -17,6 +17,9 @@ export default handleActions(
 		[task.selectCurrentList]: (store, { payload }) => ({
 			...store,
 			activeList: payload
+		}),
+		[task.selectTask]: (store, { payload }) => ({
+			...store, selectedTask: payload
 		})
 	},
 	initialState.task

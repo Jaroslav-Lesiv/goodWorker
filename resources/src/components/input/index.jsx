@@ -1,19 +1,44 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-export default class componentName extends Component {
+import { Input } from '../../ui';
+export default class InputComponent extends Component {
 	static propTypes = {
-		onType: PropTypes.func
+		onChange: PropTypes.func.isRequired,
+		modification: PropTypes.shape({
+			delay: PropTypes.bool
+		}),
+		value: PropTypes.string,
+		style: PropTypes.object
 	};
+
+	static defaultProps = {
+		value: '',
+		style: {}
+	};
+
 	constructor() {
 		super();
 		this.timer = null;
 	}
-	handleChange = event => {
+
+	handleChangeDelay = event => {
 		if (this.timer) clearTimeout(this.timer);
-		this.timer = setTimeout(() => this.props.onType(event.target.value), 700);
+		this.timer = setTimeout(() => this.props.onChange(event.target.value), 700);
 	};
 
+	handleChange = event => this.props.onChange(event.target.value);
+
 	render() {
-		return <div />;
+		return (
+			<Input
+				value={this.props.value}
+				style={this.props.style}
+				onChange={
+					this.props.modification.delay
+						? this.handleChangeDelay
+						: this.handleChange
+				}
+			/>
+		);
 	}
 }

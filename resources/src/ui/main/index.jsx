@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import logo from '../../logo.svg';
+import logo from '../../assets/images/logo/logo-beta.svg';
 // import { navigation } from '../variables';
 import config from '../../config';
 
@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 	width: ${config.APP_WIDTH}px;
 	height: ${config.APP_HEIGHT}px;
 	overflow: hidden;
-	border: 1px solid red;
 	margin: 0 auto;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -55,6 +54,7 @@ const Logo = styled.img.attrs({
 })`
 	width: 50px;
 	height: 50px;
+	padding: 10px;
 	animation: ${spin} infinite 20s linear;
 `;
 

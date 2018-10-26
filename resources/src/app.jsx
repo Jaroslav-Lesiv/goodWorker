@@ -10,7 +10,7 @@ import Header from './components/common/header';
 import { app } from './redux/actions';
 import PropTypes from 'prop-types';
 import GlobalStyle from './ui/global';
-import 'typeface-roboto';
+// import 'typeface-roboto';
 
 class App extends Component {
 	static propTypes = {

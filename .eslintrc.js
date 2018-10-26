@@ -41,6 +41,7 @@ module.exports = {
 	},
 	globals: {
 		process: true,
-		window: true
+		window: true,
+		require: true
 	}
 };

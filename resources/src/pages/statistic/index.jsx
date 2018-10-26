@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import logo from '../../logo.svg';
-import redux from '../../redux.svg';
-import electron from '../../electron.svg';
+import logo from '../../assets/images/logo/logo-beta.svg';
 import { withRouter } from 'react-router';
 import { PageSection } from '../../components/common/pageWrapper';
 
@@ -20,8 +18,6 @@ export class HomePage extends Component {
 				<div className="App">
 					<header className="App-header">
 						<img src={logo} className="App-logo" alt="logo" />
-						<img src={redux} className="App-logo" alt="logo" />
-						<img src={electron} className="App-logo" alt="logo" />
 						<h1 className="App-title">Hi {username}</h1>
 						<h1 className="App-title">Welcome to Electron React Redux App</h1>
 					</header>

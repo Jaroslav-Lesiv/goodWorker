@@ -1,9 +1,10 @@
-// import Store from 'electron-store';
-
-// const localStore = new Store({ encryptionKey: 'test' });
 import { avaibleList, doneList } from './mockData';
 
 const mockStore = class {
+	constructor() {
+		this.init();
+	}
+	
 	init() {
 		this.set('avaibleList', avaibleList);
 		this.set('doneList', doneList);

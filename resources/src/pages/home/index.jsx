@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import logo from '../../logo.svg';
-import redux from '../../redux.svg';
-import electron from '../../electron.svg';
+import logo from '../../assets/images/logo/logo-beta.svg';
 import { withRouter } from 'react-router';
 import { PageSection } from '../../components/common/pageWrapper';
+import Typography from '@material-ui/core/Typography';
 
 export class HomePage extends Component {
 	static propTypes = {
@@ -20,16 +19,17 @@ export class HomePage extends Component {
 				<div className="App">
 					<header className="App-header">
 						<img src={logo} className="App-logo" alt="logo" />
-						<img src={redux} className="App-logo" alt="logo" />
-						<img src={electron} className="App-logo" alt="logo" />
 						<h1 className="App-title">Hi {username}</h1>
-						<h1 className="App-title">Welcome to Electron React Redux App</h1>
+						<h5>Welcome to GoodWorker desktop app</h5>
 					</header>
-					<p className="App-intro">
-						To get started, edit <code>src/App.js</code> and save.
-					</p>
-					<p>created by Jaroslav Lesiv</p>
-					<p>v 0.0.1</p>
+					<h4 className="App-intro">
+						What Makes a Great Time Tracking App?
+					</h4>
+					<Typography>Tracking time as you work results in more accurate invoices than estimating
+					time worked after the fact. Having a higher degree of accuracy creates trust for
+					your clients, too, but it also benefits the business. When you know how you spend
+					your time with high accuracy, you can analyze it and make smarter business decisions
+					as a result. There are several excellent apps that can help you get started.</Typography>
 				</div>
 			</PageSection>
 		);

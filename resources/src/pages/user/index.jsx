@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from '../../logo.svg';
+import logo from '../../assets/images/logo/logo-beta.svg';
 import { Typography } from '@material-ui/core';
 export class ApiPage extends Component {
 	render() {

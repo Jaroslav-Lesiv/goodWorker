@@ -65,7 +65,7 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 	onSelect = () => {
 		const { label, description, id, priority, status } = this.props;
 		this.props.selectTask({ label, description, id, priority, status });
-		this.props.history.push(`task/${id}`);
+		this.props.history.push(`tasks/${id}/avaible`);
 	};
 
 	render() {

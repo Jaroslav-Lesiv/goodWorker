@@ -13,9 +13,10 @@ const UserHeaderRouter = () => (
 	<Switch>
 		<Route path="/" exact component={HomeHeader} />
 		<Route path="/work_time" component={WorkHeader} />
-		<Route path="/taskList" exact component={TaskListHeader} />
+		<Route path="/tasks" exact component={TaskListHeader} />
 		<Route path="/statistic" exact component={StatisticHeader} />
-		<Route path="/task/:id" exact component={TaskHeader} />
+		<Route path="/tasks/:id/avaible" exact component={TaskHeader} />
+		<Route path="/tasks/:id/done" exact component={TaskHeader} />
 		<Route path="/user" exact component={UserHeader} />
 	</Switch>
 );

@@ -10,12 +10,7 @@ const Monitor = class {
 	async getSnapshot() {
 		return await activeWin();
 	}
-    
-	// async getScreensoot() {
-	// 	screenshot({ filename: +new Date() }, (a,b,c) => {
-	// 		console.log(a,b,c);
-	// 	});
-	// }
+	
 };
 
 const windowMonitor = new Monitor();

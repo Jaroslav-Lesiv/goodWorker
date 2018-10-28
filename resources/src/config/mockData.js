@@ -4,54 +4,54 @@ const activeTask = {
 const availableList = [
 	{
 		id: 1,
-		label: 'Available list do somthin for many babosiki. Dcfrbv es EFSVDV',
-		priority: 1,
+		label: 'Statistic page',
+		priority: 5,
 		status: 2,
 		created_at: null,
 		checkpoint: null,
 		total: 1000,
 		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
+			'Create statistic page, analiz all done task'
 	},
 	{
 		id: 2,
-		label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-		priority: 3,
-		status: 0,
+		label: 'Not found and  Error handler',
+		priority: 5,
+		status: 2,
 		created_at: null,
 		checkpoint: null,
 		total: 3601,
 		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
+			'Create not found and error ui handler for task'
 	},
 	{
 		id: 3,
-		label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-		priority: 4,
-		status: 1,
+		label: 'Create subtask view',
+		priority: 5,
+		status: 2,
 		created_at: null,
 		checkpoint: null,
 		total: 4350,
 		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
+			'Create view for subtask, on one task page'
 	},
 
 	{
 		id: 4,
-		label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
-		priority: 1,
+		label: 'Loader',
+		priority: 5,
 		status: 2,
 		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
+			'Show loader if content is not loaded'
 	},
 	{
 		id: 5,
-		label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
+		label: 'Active task',
 
 		priority: 5,
-		status: 1,
+		status: 2,
 		description:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
+			'If task is active, timer must be green (success color)'
 	},
 	{
 		id: 6,

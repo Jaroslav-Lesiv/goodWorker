@@ -57,6 +57,10 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 		};
 	}
 
+	componentDidMount = () => {
+		utils.updateTitle('Available Task List');
+	}
+
 	doneTask = () => this.props.doneTask(this.props.id);
 
 	activateTask = () => this.props.activateTask(this.props.id);

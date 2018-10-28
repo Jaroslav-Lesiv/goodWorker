@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-console.log(process.env);
 const NavigationWrapper = styled.header`
 	display: flex;
 	flex-direction: column;

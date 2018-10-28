@@ -6,10 +6,6 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import configStore from './redux/store/index';
 import createMemoryHistory from 'history/createMemoryHistory';
-// import { syncStore } from './helper/storageSync'
-
-// syncStore(configStore)
-// console.log(configStore)
 
 // const old_root = document.getElementById(APP_NAME);
 const history = createMemoryHistory({

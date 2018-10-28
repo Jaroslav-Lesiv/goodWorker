@@ -9,13 +9,15 @@ import { TASK } from '../../constants';
 
 function* moveTaskToDone({ payload }) {
 	try {
-		let doneList = storage.get('doneList');
-		let avaibleList = storage.get('avaibleList');
+		let doneList = yield taskContext.getDoneList();
+		let avaibleList = yield taskContext.getAvaibleList();
+		const activeId = yield taskContext.getActiveTask();
 		const task = avaibleList.find(task => task.id === payload);
 		if (task) {
 			avaibleList = avaibleList.filter(task => task.id !== payload);
 			doneList = [task, ...doneList];
 
+			if (activeId === task.id) yield put(action.task.stopTask());
 			yield put(action.task.avaibleList.request.success(avaibleList));
 
 			storage.set('doneList', doneList);

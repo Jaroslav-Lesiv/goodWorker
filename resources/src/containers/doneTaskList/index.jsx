@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import DoneTaskListItemContainer from '../../containers/doneTaskListItem';
 import { TaskListWrapper } from '../../ui';
+import { findString } from '../../utils';
 import { task } from '../../redux/actions';
+import taskSelector from '../../redux/selectors/tasks';
 
 
 export class DoneTaskList extends Component {
 	static propTypes = {
 		doneList: PropTypes.arrayOf(PropTypes.object),
-		fetchDoneList: PropTypes.func
+		fetchDoneList: PropTypes.func,
+		keyword: PropTypes.string
 	};
 
 	static defaultProps = {
@@ -24,16 +27,20 @@ export class DoneTaskList extends Component {
 	render() {
 		return (
 			<TaskListWrapper shadow>
-				{this.props.doneList.map(task => (
-					<DoneTaskListItemContainer key={task.id} {...task} />
-				))}
+				{this.props.doneList.filter(task => 
+					findString(task.label, this.props.keyword) ||
+					findString(task.description, this.props.keyword))
+					.map(task => (
+						<DoneTaskListItemContainer key={task.id} {...task} />
+					))}
 			</TaskListWrapper>
 		);
 	}
 }
 
-const mapStateToProps = ({ task }) => ({
-	doneList: task.doneList
+const mapStateToProps = state => ({
+	doneList: taskSelector.doneList(state),
+	keyword: taskSelector.filterKeyword(state)
 });
 
 

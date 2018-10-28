@@ -5,11 +5,14 @@ import { withRouter } from 'react-router';
 import AvaibleTaskListItemContainer from '../../containers/avaibleTaskListItem';
 import { TaskListWrapper } from '../../ui';
 import { task } from '../../redux/actions';
+import { findString } from '../../utils';
+import taskSelector from '../../redux/selectors/tasks';
 
 export class AvaibleTaskList extends Component {
 	static propTypes = {
 		avaibleList: PropTypes.arrayOf(PropTypes.object),
-		fetchAvaibleList: PropTypes.func
+		fetchAvaibleList: PropTypes.func,
+		keyword: PropTypes.string
 	};
 
 	static defaultProps = {
@@ -23,23 +26,27 @@ export class AvaibleTaskList extends Component {
 	render() {
 		return (
 			<TaskListWrapper shadow>
-				{this.props.avaibleList.map(task => (
-					<AvaibleTaskListItemContainer
-						modifications={{
-							link: true,
-							hover: true
-						}}
-						key={task.id}
-						{...task}
-					/>
-				))}
+				{this.props.avaibleList.filter(task => 
+					findString(task.label, this.props.keyword) ||
+					findString(task.description, this.props.keyword))
+					.map(task => (
+						<AvaibleTaskListItemContainer
+							modifications={{
+								link: true,
+								hover: true
+							}}
+							key={task.id}
+							{...task}
+						/>
+					))}
 			</TaskListWrapper>
 		);
 	}
 }
 
-const mapStateToProps = ({ task }) => ({
-	avaibleList: task.avaibleList
+const mapStateToProps = state => ({
+	avaibleList: taskSelector.avaibleList(state),
+	keyword: taskSelector.filterKeyword(state)
 });
 
 const mapDispatchToProps = {

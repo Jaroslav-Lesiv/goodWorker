@@ -12,6 +12,9 @@ export default {
 	},
 	task: {
 		activeList: 'avaibleList',
+		filter: {
+			keyword: ''
+		},
 		selectedTask: {
 			id: null,
 			description: '',

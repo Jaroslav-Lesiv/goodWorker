@@ -23,6 +23,9 @@ export default handleActions(
 		}),
 		[task.activeTask.request.success]: (store, { payload }) => ({
 			...store, activeTask: payload
+		}),
+		[task.setFilterKeyword]: (store, { payload }) => ({
+			...store, filter: { ...store.filter, keyword: payload  }
 		})
 	},
 	initialState.task

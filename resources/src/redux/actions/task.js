@@ -30,6 +30,7 @@ export const { task } = createActions({
 		SELECT_TASK: payload => payload,
 		CHECK_ACTIVE_TASK: payload => payload,
 		ACTIVATE_TASK: payload => payload,
-		STOP_TASK: payload => payload
+		STOP_TASK: payload => payload,
+		SET_FILTER_KEYWORD: payload => payload
 	}
 });

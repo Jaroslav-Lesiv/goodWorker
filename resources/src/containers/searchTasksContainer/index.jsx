@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {task} from '../../redux/actions';
 import Input from '../../components/input';
 
 export class SearchTasksContainer extends Component {
 	static propTypes = {
-		onChange: PropTypes
+		setFilterKeyword: PropTypes.func
 	};
 
-	onChangeValue = value => console.info(value);
+	onChangeValue = value => this.props.setFilterKeyword(value);
 
 	render() {
 		return (
@@ -21,11 +22,12 @@ export class SearchTasksContainer extends Component {
 	}
 }
 
-const mapStateToProps = () => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+	setFilterKeyword: task.setFilterKeyword
+};
 
 export default connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
 )(SearchTasksContainer);

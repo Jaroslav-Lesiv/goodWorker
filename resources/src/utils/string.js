@@ -1,4 +1,4 @@
-export const { overflowTaskDescription, overflowTaskLabel, overflowString } = {
+export const { overflowTaskDescription, overflowTaskLabel, overflowString, findString } = {
 	overflowString(string, start = 0, end, after = '') {
 		return `${string.substr(start, end)}${after}}`;
 	},
@@ -7,5 +7,8 @@ export const { overflowTaskDescription, overflowTaskLabel, overflowString } = {
 	},
 	overflowTaskLabel(string) {
 		return string.length > 75 ? overflowString(string, 0, 72, '...') : string;
+	},
+	findString(string, keyword) {
+		return string.toLowerCase().includes( keyword.toLowerCase() );
 	}
 };

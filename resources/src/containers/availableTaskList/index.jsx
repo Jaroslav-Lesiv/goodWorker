@@ -2,35 +2,36 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import AvaibleTaskListItemContainer from '../../containers/avaibleTaskListItem';
+import AvailableTaskListItemContainer from '../../containers/availableTaskListItem';
 import { TaskListWrapper } from '../../ui';
 import { task } from '../../redux/actions';
-import { findString } from '../../utils';
 import taskSelector from '../../redux/selectors/tasks';
+import * as utils from '../../utils';
 
-export class AvaibleTaskList extends Component {
+export class AvailableTaskList extends Component {
 	static propTypes = {
-		avaibleList: PropTypes.arrayOf(PropTypes.object),
-		fetchAvaibleList: PropTypes.func,
+		availableList: PropTypes.arrayOf(PropTypes.object),
+		fetchAvailableList: PropTypes.func,
 		keyword: PropTypes.string
 	};
 
 	static defaultProps = {
-		avaibleList: []
+		availableList: []
 	};
 
 	componentDidMount = () => {
-		this.props.fetchAvaibleList();
+		utils.updateTitle('Available Task List');
+		this.props.fetchAvailableList();
 	};
 
 	render() {
 		return (
 			<TaskListWrapper shadow>
-				{this.props.avaibleList.filter(task => 
-					findString(task.label, this.props.keyword) ||
-					findString(task.description, this.props.keyword))
+				{this.props.availableList.filter(task => 
+					utils.findString(task.label, this.props.keyword) ||
+					utils.findString(task.description, this.props.keyword))
 					.map(task => (
-						<AvaibleTaskListItemContainer
+						<AvailableTaskListItemContainer
 							modifications={{
 								link: true,
 								hover: true
@@ -45,17 +46,17 @@ export class AvaibleTaskList extends Component {
 }
 
 const mapStateToProps = state => ({
-	avaibleList: taskSelector.avaibleList(state),
+	availableList: taskSelector.availableList(state),
 	keyword: taskSelector.filterKeyword(state)
 });
 
 const mapDispatchToProps = {
-	fetchAvaibleList: task.avaibleList.request.pending
+	fetchAvailableList: task.availableList.request.pending
 };
 
 export default withRouter(
 	connect(
 		mapStateToProps,
 		mapDispatchToProps
-	)(AvaibleTaskList)
+	)(AvailableTaskList)
 );

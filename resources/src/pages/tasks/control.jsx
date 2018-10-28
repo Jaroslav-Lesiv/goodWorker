@@ -34,7 +34,7 @@ export class TaskListControl extends Component {
 			filters: []
 		};
 		this.taskButtons = [
-			{ name: 'avaibleList', icon: <ViewList /> },
+			{ name: 'availableList', icon: <ViewList /> },
 			{ name: 'doneList', icon: <PlaylistAddCheck /> }
 		];
 	}

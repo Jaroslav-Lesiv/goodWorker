@@ -10,39 +10,39 @@ import { TASK } from '../../constants';
 function* moveTaskToDone({ payload }) {
 	try {
 		let doneList = yield taskContext.getDoneList();
-		let avaibleList = yield taskContext.getAvaibleList();
+		let availableList = yield taskContext.getAvailableList();
 		const activeId = yield taskContext.getActiveTask();
-		const task = avaibleList.find(task => task.id === payload);
+		const task = availableList.find(task => task.id === payload);
 		if (task) {
-			avaibleList = avaibleList.filter(task => task.id !== payload);
+			availableList = availableList.filter(task => task.id !== payload);
 			doneList = [task, ...doneList];
 
 			if (activeId === task.id) yield put(action.task.stopTask());
-			yield put(action.task.avaibleList.request.success(avaibleList));
+			yield put(action.task.availableList.request.success(availableList));
 
 			storage.set('doneList', doneList);
-			storage.set('avaibleList', avaibleList);
+			storage.set('availableList', availableList);
 		} else {
-			yield put(action.task.avaibleList.request.failed('Not found'));
+			yield put(action.task.availableList.request.failed('Not found'));
 		}
 	} catch (error) {
-		yield put(action.task.avaibleList.request.failed(error));
+		yield put(action.task.availableList.request.failed(error));
 	}
 }
 
-function* moveTaskToAvaible({ payload }) {
+function* moveTaskToAvailable({ payload }) {
 	try {
 		let doneList = storage.get('doneList');
-		let avaibleList = storage.get('avaibleList');
+		let availableList = storage.get('availableList');
 		const task = doneList.find(task => task.id === payload);
 		if (task) {
 			doneList = doneList.filter(task => task.id !== payload);
-			avaibleList = [task, ...avaibleList];
+			availableList = [task, ...availableList];
 
 			yield put(action.task.doneList.request.success(doneList));
 
 			storage.set('doneList', doneList);
-			storage.set('avaibleList', avaibleList);
+			storage.set('availableList', availableList);
 		} else {
 			yield put(action.task.doneList.request.failed('Not found'));
 		}
@@ -51,9 +51,9 @@ function* moveTaskToAvaible({ payload }) {
 	}
 }
 
-function* getAvaibleList() {
-	const avaibleList = storage.get('avaibleList');
-	yield put(action.task.avaibleList.request.success(avaibleList));
+function* getAvailableList() {
+	const availableList = storage.get('availableList');
+	yield put(action.task.availableList.request.success(availableList));
 }
 function* getDoneList() {
 	const doneList = storage.get('doneList');
@@ -66,10 +66,10 @@ function* checkActiveTask({payload}) {
 	try {
 		const activeId = yield taskContext.getActiveTask();
 		if (activeId) {
-			const task = yield taskContext.getAvaibleTask(activeId);
+			const task = yield taskContext.getAvailableTask(activeId);
 			const updatedTask = yield taskWorker.updateTask({task, period: increment});
-			yield taskContext.updateAvaibleTask({ task: updatedTask });
-			yield put(action.task.avaibleList.request.pending());
+			yield taskContext.updateAvailableTask({ task: updatedTask });
+			yield put(action.task.availableList.request.pending());
 		}
 		
 		yield delay(TASK.PERIOD[period]);
@@ -84,7 +84,7 @@ function* checkActiveTask({payload}) {
 
 function* activateTask({payload}) {
 	try {
-		const task = yield taskContext.getAvaibleList(payload);
+		const task = yield taskContext.getAvailableList(payload);
 		if (task) {
 			yield taskContext.activateTask(payload);
 			yield put(action.task.activeTask.request.pending());
@@ -115,6 +115,6 @@ function* stopTask() {
 }
 
 export { 
-	moveTaskToDone, getAvaibleList, getDoneList, moveTaskToAvaible,
+	moveTaskToDone, getAvailableList, getDoneList, moveTaskToAvailable,
 	checkActiveTask, activateTask, getActive, stopTask
 };

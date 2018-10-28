@@ -11,7 +11,7 @@ export default {
 		username: ''
 	},
 	task: {
-		activeList: 'avaibleList',
+		activeList: 'availableList',
 		filter: {
 			keyword: ''
 		},
@@ -47,7 +47,7 @@ export default {
 				}
 			]
 		},
-		avaibleList: [],
+		availableList: [],
 		doneList: []
 	}
 };

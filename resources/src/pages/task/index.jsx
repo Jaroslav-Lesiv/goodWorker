@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Container } from '../../ui';
 import { PageSection } from '../../components/common/pageWrapper';
-import AvaibleTaskListItemContainer from '../../containers/avaibleTaskListItem';
+import AvailableTaskListItemContainer from '../../containers/availableTaskListItem';
 
 export class TaskPage extends Component {
 	static propTypes = {
@@ -21,7 +21,7 @@ export class TaskPage extends Component {
 		return (
 			<PageSection>
 				<Container shadow>
-					<AvaibleTaskListItemContainer
+					<AvailableTaskListItemContainer
 						label={label}
 						description={description}
 						total={total}

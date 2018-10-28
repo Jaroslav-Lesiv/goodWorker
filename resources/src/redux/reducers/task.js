@@ -4,9 +4,9 @@ import initialState from '../store/initialState';
 
 export default handleActions(
 	{
-		[task.avaibleList.request.success]: (store, { payload }) => ({
+		[task.availableList.request.success]: (store, { payload }) => ({
 			...store,
-			avaibleList: payload
+			availableList: payload
 		}),
 
 		[task.doneList.request.success]: (store, { payload }) => ({

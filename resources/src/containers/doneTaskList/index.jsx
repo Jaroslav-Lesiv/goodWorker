@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import DoneTaskListItemContainer from '../../containers/doneTaskListItem';
 import { TaskListWrapper } from '../../ui';
-import { findString } from '../../utils';
+import * as utils from '../../utils';
 import { task } from '../../redux/actions';
 import taskSelector from '../../redux/selectors/tasks';
 
@@ -21,6 +21,7 @@ export class DoneTaskList extends Component {
 	};
 
 	componentDidMount = () => {
+		utils.updateTitle('Done Task List');
 		this.props.fetchDoneList();
 	};
 
@@ -28,8 +29,8 @@ export class DoneTaskList extends Component {
 		return (
 			<TaskListWrapper shadow>
 				{this.props.doneList.filter(task => 
-					findString(task.label, this.props.keyword) ||
-					findString(task.description, this.props.keyword))
+					utils.findString(task.label, this.props.keyword) ||
+					utils.findString(task.description, this.props.keyword))
 					.map(task => (
 						<DoneTaskListItemContainer key={task.id} {...task} />
 					))}

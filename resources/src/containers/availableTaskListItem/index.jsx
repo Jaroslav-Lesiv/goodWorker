@@ -20,7 +20,7 @@ import PriorityComponent from '../../components/priority';
 import StatusComponent from '../../components/status';
 import Time from '../../components/time';
 
-class AvaibleTaskListItemContainer extends React.PureComponent {
+class AvailableTaskListItemContainer extends React.PureComponent {
 	static propTypes = {
 		label: PropTypes.string,
 		description: PropTypes.string,
@@ -57,10 +57,6 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 		};
 	}
 
-	componentDidMount = () => {
-		utils.updateTitle('Available Task List');
-	}
-
 	doneTask = () => this.props.doneTask(this.props.id);
 
 	activateTask = () => this.props.activateTask(this.props.id);
@@ -90,7 +86,7 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 			total,
 			created_at
 		});
-		this.props.history.push(`tasks/${id}/avaible`);
+		this.props.history.push(`tasks/${id}/available`);
 	};
 
 	render() {
@@ -174,5 +170,5 @@ export default withRouter(
 	connect(
 		mapStateToProps,
 		mapDispatchToProps
-	)(AvaibleTaskListItemContainer)
+	)(AvailableTaskListItemContainer)
 );

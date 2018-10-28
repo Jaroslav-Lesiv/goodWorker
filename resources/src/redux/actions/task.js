@@ -2,7 +2,7 @@ import { createActions } from 'redux-actions';
 
 export const { task } = createActions({
 	TASK: {
-		AVAIBLE_LIST: {
+		AVAILABLE_LIST: {
 			REQUEST: {
 				PENDING: payload => payload,
 				SUCCESS: payload => payload,

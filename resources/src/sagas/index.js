@@ -29,13 +29,13 @@ function* fetchDoneTask() {
 	yield takeLatest(action.task.doneTask, task.moveTaskToDone);
 }
 function* fetchBackTask() {
-	yield takeLatest(action.task.backTask, task.moveTaskToAvaible);
+	yield takeLatest(action.task.backTask, task.moveTaskToAvailable);
 }
 
-function* fetchGetAvaibleList() {
+function* fetchGetAvailableList() {
 	yield takeLatest(
-		action.task.avaibleList.request.pending,
-		task.getAvaibleList
+		action.task.availableList.request.pending,
+		task.getAvailableList
 	);
 }
 
@@ -67,7 +67,7 @@ export default function* rootSaga() {
 		fetchInitWorker(),
 		userLoginWorker(),
 		fetchDoneTask(),
-		fetchGetAvaibleList(),
+		fetchGetAvailableList(),
 		fetchGetDoneList(),
 		fetchBackTask(),
 		fetchCheckActiveTask(),

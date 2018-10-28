@@ -29,7 +29,7 @@ class UserRouter extends PureComponent {
 			<Switch>
 				<Route path="/" exact component={HomePage} />
 				<Route path="/tasks" exact component={TaskListPage} />
-				<Route path="/tasks/:id/avaible" component={TaskPage} />
+				<Route path="/tasks/:id/available" component={TaskPage} />
 				<Route path="/tasks/:id/done" component={TaskPage} />
 				<Route path="/statistic" component={StatisticPage} />
 				<Route path="/user" component={UserPage} />

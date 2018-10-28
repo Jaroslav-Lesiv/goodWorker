@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { PageSection } from '../../components/common/pageWrapper';
-import AvaibleTaskList from '../../containers/avaibleTaskList';
+import AvailableTaskList from '../../containers/availableTaskList';
 import DoneTaskList from '../../containers/doneTaskList';
 import TaskListControl from './control';
 
 export class HomePage extends Component {
 	static propTypes = {
-		avaibleList: PropTypes.arrayOf(PropTypes.object),
+		availableList: PropTypes.arrayOf(PropTypes.object),
 		doneList: PropTypes.arrayOf(PropTypes.object),
 		activeList: PropTypes.string
 	};
 
 	static defaultProps = {
-		avaibleList: [],
+		availableList: [],
 		doneList: []
 	};
 
@@ -25,8 +25,8 @@ export class HomePage extends Component {
 			<PageSection>
 				<TaskListControl />
 
-				{activeList === 'avaibleList'
-					? <AvaibleTaskList />
+				{activeList === 'availableList'
+					? <AvailableTaskList />
 					: activeList === 'doneList'
 						? <DoneTaskList />
 						: null}
@@ -36,7 +36,7 @@ export class HomePage extends Component {
 }
 
 const mapStateToProps = ({ task }) => ({
-	avaibleList: task.avaibleList,
+	availableList: task.availableList,
 	doneList: task.doneList,
 	activeList: task.activeList
 });

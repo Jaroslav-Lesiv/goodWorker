@@ -41,6 +41,10 @@ const activateTask = async id => {
 	}
 };
 
+const stopTask = async () => {
+	setActive(null);
+};
+
 const getActiveTask = async () => {
 	const activeTask = storage.get('activeTask');
 	if (activateTask) {
@@ -56,5 +60,6 @@ export default {
 	activateTask,
 	getAvaibleTask,
 	getActiveTask,
-	updateAvaibleTask
+	updateAvaibleTask,
+	stopTask
 };

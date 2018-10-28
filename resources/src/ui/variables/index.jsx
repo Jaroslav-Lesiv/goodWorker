@@ -4,7 +4,8 @@ const color = {
 	textColor: '#222',
 	light: '#E0E0E0',
 	disabledText: 'rgba(0, 0, 0, 0.26)',
-	disabled: 'rgba(0, 0, 0, 0.12)'
+	disabled: 'rgba(0, 0, 0, 0.12)',
+	outline: '#96D3FC'
 };
 
 const navigation = {

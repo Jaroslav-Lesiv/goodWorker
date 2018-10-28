@@ -6,7 +6,6 @@ import { PageSection } from '../../components/common/pageWrapper';
 import AvaibleTaskList from '../../containers/avaibleTaskList';
 import DoneTaskList from '../../containers/doneTaskList';
 import TaskListControl from './control';
-import { task } from '../../redux/actions';
 
 export class HomePage extends Component {
 	static propTypes = {
@@ -36,20 +35,15 @@ export class HomePage extends Component {
 	}
 }
 
-const mapStateToProps = ({ task, user }) => ({
-	user,
+const mapStateToProps = ({ task }) => ({
 	avaibleList: task.avaibleList,
 	doneList: task.doneList,
 	activeList: task.activeList
 });
 
-const mapDispatchToProps = {
-	onActivate: task.start
-};
-
 export default withRouter(
 	connect(
 		mapStateToProps,
-		mapDispatchToProps
+		null
 	)(HomePage)
 );

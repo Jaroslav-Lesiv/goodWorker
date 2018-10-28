@@ -58,23 +58,24 @@ function* getDoneList() {
 	yield put(action.task.doneList.request.success(doneList));
 }
 
-function* checkActiveTask({payload = 1}) {
+function* checkActiveTask({payload}) {
+	let { period = 1, increment } = payload;
+	if (increment === undefined) increment = period;
 	try {
 		const activeId = yield taskContext.getActiveTask();
 		if (activeId) {
 			const task = yield taskContext.getAvaibleTask(activeId);
-			// console.log({activeId, task});
-			const updatedTask = yield taskWorker.updateTask({task, period: payload});
+			const updatedTask = yield taskWorker.updateTask({task, period: increment});
 			yield taskContext.updateAvaibleTask({ task: updatedTask });
 			yield put(action.task.avaibleList.request.pending());
 		}
 		
-		yield delay(TASK.PERIOD[payload]);
-		yield put(action.task.checkActiveTask(payload));
+		yield delay(TASK.PERIOD[period]);
+		yield put(action.task.checkActiveTask({ period }));
 	} catch (error) {
 		console.warn(error);
-		yield delay(TASK.PERIOD[payload]);
-		yield put(action.task.checkActiveTask(payload));
+		yield delay(TASK.PERIOD[period]);
+		yield put(action.task.checkActiveTask({period}));
 	}
 
 }
@@ -83,7 +84,9 @@ function* activateTask({payload}) {
 	try {
 		const task = yield taskContext.getAvaibleList(payload);
 		if (task) {
-			taskContext.activateTask(payload);
+			yield taskContext.activateTask(payload);
+			yield put(action.task.activeTask.request.pending());
+			yield put(action.task.checkActiveTask({period: 1, increment: 0}));
 		}
 	} catch (error) {
 		console.warn(error);
@@ -98,7 +101,18 @@ function* getActive() {
 		console.warn(error);
 		yield put(action.task.activeTask.request.failed(error));
 	}
-
 }
 
-export { moveTaskToDone, getAvaibleList, getDoneList, moveTaskToAvaible, checkActiveTask, activateTask, getActive };
+function* stopTask() {
+	try {
+		yield taskContext.stopTask();
+		yield put(action.task.activeTask.request.pending());
+	} catch (error) {
+		console.warn(error);
+	}
+}
+
+export { 
+	moveTaskToDone, getAvaibleList, getDoneList, moveTaskToAvaible,
+	checkActiveTask, activateTask, getActive, stopTask
+};

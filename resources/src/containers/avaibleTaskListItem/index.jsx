@@ -95,6 +95,7 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 		const { link, hover } = modifications;
 		const activeTask = this.checkActiveTask();
 		const isShowControl = !hover || isHovered;
+		
 		return (
 			<TaskWrapper
 				onMouseEnter={hover ? () => this.setHover(true) : undefined}

@@ -4,6 +4,7 @@ export const TASK = {
 	PRIORITY: { 1: null, 2: null, 3: null, 4: null, 5: null },
 	TASK_TYPE: ['avaibleList', 'doneList'],
 	PERIOD: {
+		0: 0,
 		// 10 sec
 		1: 10000,
 		// 30 sec

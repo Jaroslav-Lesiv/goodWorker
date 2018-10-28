@@ -86,7 +86,8 @@ const IconButton = styled.button`
 		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.4)'};
 	}
 	&:focus {
-		box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.4);
+		box-shadow: 0 0 3px 2px ${color.outline};
+		outline: none;
 	}
 	& > svg {
 		width: ${({ size }) => size || 25}px;

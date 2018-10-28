@@ -12,7 +12,7 @@ function* userLoginWorker() {
 function* fetchInitWorker() {
 	yield takeEvery(action.app.init, function* () {
 		yield put(action.user.checkUser());
-		yield put(action.task.checkActiveTask());
+		yield put(action.task.checkActiveTask({ period: 1, increment: 0 }));
 		yield put(action.task.activeTask.request.pending());
 	});
 }
@@ -56,6 +56,10 @@ function* fetchActivateTask() {
 	yield takeLatest(action.task.activateTask, task.activateTask);
 }
 
+function* fetchStopTask() {
+	yield takeLatest(action.task.stopTask, task.stopTask);
+}
+
 // TASK END
 
 export default function* rootSaga() {
@@ -69,6 +73,7 @@ export default function* rootSaga() {
 		fetchCheckActiveTask(),
 		fetchCheckUser(),
 		fetchActivateTask(),
-		fetchGetActiveTask()
+		fetchGetActiveTask(),
+		fetchStopTask()
 	]);
 }

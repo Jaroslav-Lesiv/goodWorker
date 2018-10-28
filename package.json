@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-examples",
+  "name": "GoodWorker",
   "version": "1.0.0",
-  "description": "Electron react examples",
+  "description": "Tracking time as you work results in more accurate invoices than estimating time worked after the fact.",
   "main": "main.js",
   "scripts": {
     "build:app": "node resources/scripts/build.js",

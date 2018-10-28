@@ -29,6 +29,7 @@ export const { task } = createActions({
 		BACK_TASK: payload => payload,
 		SELECT_TASK: payload => payload,
 		CHECK_ACTIVE_TASK: payload => payload,
-		ACTIVATE_TASK: payload => payload
+		ACTIVATE_TASK: payload => payload,
+		STOP_TASK: payload => payload
 	}
 });

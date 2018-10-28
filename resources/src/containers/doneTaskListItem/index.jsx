@@ -8,7 +8,7 @@ import {
 	ClickedIcon,
 	Block
 } from '../../ui';
-import { ArrowBack } from '@material-ui/icons';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 import { Grow } from '@material-ui/core';
 import * as utils from '../../utils';
 import PropTypes from 'prop-types';

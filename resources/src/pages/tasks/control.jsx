@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
 import { ClickedIcon, Container } from '../../ui';
-import { ViewList, PlaylistAddCheck } from '@material-ui/icons';
+import ViewList from '@material-ui/icons/ViewList';
+import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck';
 import { connect } from 'react-redux';
 import { task } from '../../redux/actions';
 import SearchTasksContainer from '../../containers/searchTasksContainer';
 
 const ControlWrapper = styled(Container)`
+	position: sticky;
+	top: 10px;
 	& > :first-child {
 		/* padding-left: 0; */
 		margin-left: 0;

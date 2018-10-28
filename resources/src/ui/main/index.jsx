@@ -56,6 +56,11 @@ const Logo = styled.img.attrs({
 	animation: ${spin} infinite 20s linear;
 `;
 
+const Image = styled.img`
+	width: ${({ size, width }) => width || size || 30}px;
+	height: ${({ size, height }) => height || size || 30}px;
+`;
+
 const Block = styled.div`
 	display: flex;
 	justify-content: ${({ justify }) => justify || 'flex-start'};
@@ -88,5 +93,6 @@ export {
 	Section,
 	Container,
 	TaskListWrapper,
-	PageWrapper
+	PageWrapper,
+	Image
 };

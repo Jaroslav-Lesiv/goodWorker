@@ -8,7 +8,9 @@ import {
 	ClickedIcon,
 	Block
 } from '../../ui';
-import { Check, DeleteForever, PlayArrow } from '@material-ui/icons';
+import PlayArrow from '@material-ui/icons/PlayArrow';
+import Check from '@material-ui/icons/Check';
+import DeleteForever from '@material-ui/icons/DeleteForever';
 import { Grow } from '@material-ui/core';
 import * as utils from '../../utils';
 import PropTypes from 'prop-types';

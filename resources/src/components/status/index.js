@@ -22,6 +22,7 @@ export default class StatusComponent extends Component {
 	shouldComponentUpdate = ({ status }) => status !== this.props.status;
 
 	render() {
+		console.log(this.props.status,TASK.status, TASK.status[this.props.status]);
 		return <Status status={this.props.status} />;
 	}
 }

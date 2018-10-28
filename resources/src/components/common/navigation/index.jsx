@@ -6,7 +6,10 @@ import {
 	NavigationLogo,
 	Logo
 } from '../../../ui';
-import { Home, ListAlt, PieChart, Timer } from '@material-ui/icons';
+import Home  from '@material-ui/icons/Home';
+import ListAlt  from '@material-ui/icons/ListAlt';
+import PieChart  from '@material-ui/icons/PieChart';
+import Timer  from '@material-ui/icons/Timer';
 import NavigationItem from './item';
 import { withRouter } from 'react-router';
 

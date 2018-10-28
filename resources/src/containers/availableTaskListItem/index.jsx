@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { Check, PlayArrow, Stop } from '@material-ui/icons';
+import Check from '@material-ui/icons/Check';
+import PlayArrow from '@material-ui/icons/PlayArrow';
+import Stop from '@material-ui/icons/Stop';
 import { Grow } from '@material-ui/core';
 import { connect } from 'react-redux';
 

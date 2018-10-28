@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import { PageSection } from '../../components/common/pageWrapper';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
+import * as utils from '../../utils';
+import NotFound from '../../components/notFound';
+
 export class NotFoundPage extends Component {
 	static propTypes = {
 		history: PropTypes.object
 	};
+
+	componentDidMount = () => {
+		utils.updateTitle('Not found');
+	}
+
 	render() {
-		return (
-			<PageSection>
-				<div className="App">
-					<h1>Not found route - ${this.props.history.location.pathname}</h1>
-				</div>
-			</PageSection>
-		);
+		return <NotFound message={`Sorry, we couldn't find route ${this.props.history.location.pathname}`} />;
 	}
 }
 

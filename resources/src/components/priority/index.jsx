@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Block } from '../../ui';
-import { Flag, FlagOutlined } from '@material-ui/icons';
+import FlagOutlined from '@material-ui/icons/FlagOutlined';
+import Flag from '@material-ui/icons/Flag';
 import { TASK } from '../../constants';
 
 export default class PriorityComponent extends Component {

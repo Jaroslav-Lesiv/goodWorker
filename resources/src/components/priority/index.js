@@ -19,9 +19,9 @@ export default class PriorityComponent extends Component {
 				{Object.keys(TASK.PRIORITY).map(
 					(type, idx) =>
 						type <= priority ? (
-							<Flag key={idx} fontSize={size || 'small'} />
+							<Flag key={idx} fontSize={size || 'default'} />
 						) : (
-							<FlagOutlined key={idx} fontSize={size || 'small'} />
+							<FlagOutlined key={idx} fontSize={size || 'default'} />
 						)
 				)}
 			</Block>

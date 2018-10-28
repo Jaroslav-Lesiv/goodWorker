@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import styled from 'styled-components';
-import { Input, ClickedIcon, Container } from '../../ui';
+import { ClickedIcon, Container } from '../../ui';
 import { ViewList, PlaylistAddCheck } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import { task } from '../../redux/actions';
+import SearchTasksContainer from '../../containers/searchTasksContainer';
+
 const ControlWrapper = styled(Container)`
 	& > :first-child {
 		/* padding-left: 0; */
@@ -26,21 +28,19 @@ export class TaskListControl extends Component {
 		activeList: PropTypes.string
 	};
 
-	state = {
-		search: '',
-		filters: [],
-		taskButtons: [
+	constructor() {
+		super();
+		this.state = {
+			filters: []
+		};
+		this.taskButtons = [
 			{ name: 'avaibleList', icon: <ViewList /> },
 			{ name: 'doneList', icon: <PlaylistAddCheck /> }
-		]
-	};
-
-	handleChange = name => event => {
-		this.setState({ [name]: event.target.value });
-	};
+		];
+	}
 
 	renderTaskControlButtons = () =>
-		this.state.taskButtons.map(button => (
+		this.taskButtons.map(button => (
 			<ClickedIcon
 				key={button.name}
 				size={20}
@@ -53,16 +53,13 @@ export class TaskListControl extends Component {
 		));
 
 	render() {
-		const { search } = this.state;
 		return (
 			<ControlWrapper>
-				<Input
-					value={search}
+				<SearchTasksContainer
 					style={{
 						flexGrow: 1,
 						marginRight: 7.5
 					}}
-					onChange={this.handleChange('search')}
 				/>
 
 				<ToogledButtonWrapper>

@@ -20,6 +20,9 @@ export default handleActions(
 		}),
 		[task.selectTask]: (store, { payload }) => ({
 			...store, selectedTask: payload
+		}),
+		[task.activeTask.request.success]: (store, { payload }) => ({
+			...store, activeTask: payload
 		})
 	},
 	initialState.task

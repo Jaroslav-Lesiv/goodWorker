@@ -20,7 +20,7 @@ module.exports = {
 	},
 	plugins: ['react'],
 	rules: {
-		'no-console': ['error', { allow: ['warn', 'error', 'log'] }],
+		'no-console': ['error', { allow: ['warn', 'error', 'log', 'info', 'time', 'timeEnd'] }],
 		'react/jsx-uses-react': 'error',
 		'react/jsx-uses-vars': 'error',
 		indent: ['error', 'tab'],

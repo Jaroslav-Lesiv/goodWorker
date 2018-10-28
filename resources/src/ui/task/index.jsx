@@ -50,8 +50,13 @@ const TaskControlBlock = styled(Block)`
 	flex-grow: 1;
 	flex-direction: column;
 	min-width: 90px;
+	height: 100%;
 	align-items: flex-end;
 	justify-content: space-between;
+`;
+
+const TimeUI = styled.span`
+	color: grey;
 `;
 
 export {
@@ -59,5 +64,6 @@ export {
 	TaskName,
 	TaskDescription,
 	TaskInfoBlock,
-	TaskControlBlock
+	TaskControlBlock,
+	TimeUI
 };

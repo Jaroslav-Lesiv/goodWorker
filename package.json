@@ -138,7 +138,11 @@
     "extends": "react-app"
   },
   "dependencies": {
+    "active-win": "^3.0.1",
     "active-window": "^0.1.0",
+    "active-window-es6": "^0.1.4",
+    "electron-screencapture": "^1.1.0",
+    "electron-screenshot": "^1.0.5",
     "electron-store": "^2.0.0"
   }
 }

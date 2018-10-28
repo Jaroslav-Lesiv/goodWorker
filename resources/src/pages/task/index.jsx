@@ -11,17 +11,21 @@ export class TaskPage extends Component {
 		description: PropTypes.string,
 		id: PropTypes.number,
 		priority: PropTypes.number,
-		status: PropTypes.number
+		status: PropTypes.number,
+		total: PropTypes.number,
+		created_at: PropTypes.string,
 	};
 
 	render() {
-		const { label, description, id, priority, status } = this.props;
+		const { label, description, id, priority, status, total, created_at } = this.props;
 		return (
 			<PageSection>
 				<Container shadow>
 					<AvaibleTaskListItemContainer
 						label={label}
 						description={description}
+						total={total}
+						created_at={created_at}
 						id={id}
 						priority={priority}
 						status={status}
@@ -41,7 +45,9 @@ const mapStateToProps = ({ task }) => ({
 	status: task.selectedTask.status,
 	priority: task.selectedTask.priority,
 	label: task.selectedTask.label,
-	description: task.selectedTask.description
+	description: task.selectedTask.description,
+	created_at: task.selectedTask.created_at,
+	total: task.selectedTask.total
 });
 
 const mapDispatchToProps = {};

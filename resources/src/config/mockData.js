@@ -1,9 +1,15 @@
+const activeTask = {
+	id: 1
+};
 const avaibleList = [
 	{
 		id: 1,
 		label: 'Avaible list do somthin for many babosiki. Dcfrbv es EFSVDV',
 		priority: 1,
 		status: 2,
+		created_at: null,
+		checkpoint: null,
+		total: 1000,
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
 	},
@@ -12,6 +18,9 @@ const avaibleList = [
 		label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
 		priority: 3,
 		status: 0,
+		created_at: null,
+		checkpoint: null,
+		total: 3601,
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
 	},
@@ -20,6 +29,9 @@ const avaibleList = [
 		label: 'do somthin for many babosiki. Dcfrbv es EFSVDV',
 		priority: 4,
 		status: 1,
+		created_at: null,
+		checkpoint: null,
+		total: 4350,
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
 	},
@@ -85,4 +97,4 @@ const doneList = [
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
 	}
 ];
-export { avaibleList, doneList };
+export { avaibleList, doneList, activeTask };

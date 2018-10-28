@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import LoginPage from './pages/auth/login';
 import HomePage from './pages/home';
 import StatisticPage from './pages/statistic';
-import TaskListPage from './pages/task_list';
+import TaskListPage from './pages/tasks';
 import TaskPage from './pages/task';
 import UserPage from './pages/user';
 import NotFoundPage from './pages/notFound';

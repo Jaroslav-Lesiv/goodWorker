@@ -14,11 +14,11 @@ import GlobalStyle from './ui/global';
 
 class App extends Component {
 	static propTypes = {
-		start: PropTypes.func,
+		init: PropTypes.func,
 		isLogin: PropTypes.bool
 	};
 	componentDidMount = () => {
-		this.props.start();
+		this.props.init();
 	};
 	render() {
 		const { isLogin } = this.props;
@@ -43,7 +43,7 @@ const mapStateToProps = ({ user }) => ({
 });
 
 const mapDispatchToProps = {
-	start: app.start
+	init: app.init
 };
 
 export default withRouter(

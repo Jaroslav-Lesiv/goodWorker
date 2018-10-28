@@ -18,11 +18,14 @@ import * as utils from '../../utils';
 import { task } from '../../redux/actions';
 import PriorityComponent from '../../components/priority';
 import StatusComponent from '../../components/status';
+import Time from '../../components/time';
 
 class AvaibleTaskListItemContainer extends React.PureComponent {
 	static propTypes = {
 		label: PropTypes.string,
 		description: PropTypes.string,
+		total: PropTypes.number,
+		created_at: PropTypes.string,
 		priority: PropTypes.number,
 		status: PropTypes.number,
 		id: PropTypes.number,
@@ -41,6 +44,7 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 	static defaultProps = {
 		label: '',
 		description: '',
+		total: 0,
 		modifications: {
 			link: true
 		}
@@ -56,6 +60,7 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 	doneTask = () => this.props.doneTask(this.props.id);
 
 	activateTask = () => this.props.activateTask(this.props.id);
+
 	stopTask = () => this.props.stopTask(this.props.id);
 
 	checkActiveTask = () => this.props.currentTaskID === this.props.id;
@@ -63,8 +68,24 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 	setHover = bool => this.setState({ isHovered: bool });
 
 	onSelect = () => {
-		const { label, description, id, priority, status } = this.props;
-		this.props.selectTask({ label, description, id, priority, status });
+		const {
+			label,
+			description,
+			id,
+			priority,
+			status,
+			total,
+			created_at
+		} = this.props;
+		this.props.selectTask({
+			label,
+			description,
+			id,
+			priority,
+			status,
+			total,
+			created_at
+		});
 		this.props.history.push(`tasks/${id}/avaible`);
 	};
 
@@ -117,6 +138,13 @@ class AvaibleTaskListItemContainer extends React.PureComponent {
 									icon={<Check />}
 									status={'active'}
 								/>
+							</Grow>
+						</Block>
+						<Block align={'flex-end'}>
+							<Grow in={isShowControl}>
+								<div>
+									<Time time={this.props.total} />
+								</div>
 							</Grow>
 						</Block>
 					</TaskControlBlock>

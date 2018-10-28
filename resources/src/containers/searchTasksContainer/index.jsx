@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {task} from '../../redux/actions';
 import Input from '../../components/input';
+import taskSelector from '../../redux/selectors/tasks';
 
 export class SearchTasksContainer extends Component {
 	static propTypes = {
@@ -16,6 +17,7 @@ export class SearchTasksContainer extends Component {
 			<Input
 				mod={{ delay: true }}
 				onChange={this.onChangeValue}
+				defaultValue={this.props.keyword}
 				{...this.props}
 			/>
 		);
@@ -27,7 +29,11 @@ const mapDispatchToProps = {
 	setFilterKeyword: task.setFilterKeyword
 };
 
+const mapStateToProps = state => ({
+	keyword: taskSelector.filterKeyword(state)
+});
+
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(SearchTasksContainer);

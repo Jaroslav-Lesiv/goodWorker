@@ -1,7 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 import logo from '../../assets/images/logo/logo-beta.svg';
-// import { navigation } from '../variables';
-import config from '../../config';
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
@@ -9,8 +7,8 @@ const spin = keyframes`
 `;
 const Wrapper = styled.div`
 	display: flex;
-	width: ${config.APP_WIDTH}px;
-	height: ${config.APP_HEIGHT}px;
+	width: ${process.env.APP_WIDTH}px;
+	height: ${process.env.APP_HEIGHT}px;
 	overflow: hidden;
 	margin: 0 auto;
 	justify-content: flex-start;
@@ -23,7 +21,7 @@ const Main = styled.div`
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: flex-start;
-	height: ${config.APP_HEIGHT}px;
+	height: ${process.env.APP_HEIGHT}px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	&::-webkit-scrollbar {
@@ -39,7 +37,7 @@ const PageWrapper = styled.section`
 	justify-content: center;
 	align-items: flex-start;
 	flex: 1;
-	height: ${config.APP_HEIGHT - config.NAVIGATION.HEIGHT}px;
+	height: ${process.env.APP_HEIGHT - process.env.NAVIGATION_HEIGHT}px;
 `;
 
 const Section = styled.div`

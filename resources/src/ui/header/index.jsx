@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { navigation, color } from '../';
 
 const HeaderUI = styled.header`
 	width: 100%;
-	height: ${navigation.width}px;
-	background-color: ${color.white};
-	color: ${color.primary};
+	height: ${process.env.NAVIGATION_HEIGHT}px;
+	background-color: ${process.env.COLOR.white};
+	color: ${process.env.COLOR.primary};
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -13,7 +12,7 @@ const HeaderUI = styled.header`
 `;
 
 const HeaderTitle = styled.h2`
-	color: ${color.primary};
+	color: ${process.env.COLOR.primary};
 	font-size: 1.4em;
 	font-weight: 600;
 	display: flex;

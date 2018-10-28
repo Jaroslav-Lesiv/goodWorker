@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { color } from '..';
 import React from 'react';
 const Button = styled.button`
 	border: none;
 	padding: 15px 25px;
 	background-color: ${({ status }) =>
-		status === 'active' ? color.primary : color.white};
+		status === 'active' ? process.env.COLOR.primary : process.env.COLOR.white};
 	border-radius: 2px;
 	box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
 	&:hover {
@@ -25,7 +24,7 @@ const Input = styled.input`
 	box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
 
 	background-color: ${({ active, disabled }) =>
-		disabled ? color.disabled : active ? color.primary : color.white};
+		disabled ? process.env.COLOR.disabled : active ? process.env.COLOR.primary : process.env.COLOR.white};
 
 	box-shadow: ${({ disabled }) =>
 		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.2)'};
@@ -47,7 +46,7 @@ const Textarea = styled.textarea`
 	box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
 
 	background-color: ${({ active, disabled }) =>
-		disabled ? color.disabled : active ? color.primary : color.white};
+		disabled ? process.env.COLOR.disabled : active ? process.env.COLOR.primary : process.env.COLOR.white};
 
 	box-shadow: ${({ disabled }) =>
 		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.2)'};
@@ -74,10 +73,10 @@ const IconButton = styled.button`
 	transition: 400ms;
 	border-radius: ${({ circle }) => (circle ? '50%' : '2px')};
 	background-color: ${({ active, disabled }) =>
-		disabled ? color.disabled : active ? color.primary : color.white};
+		disabled ? process.env.COLOR.disabled : active ? process.env.COLOR.primary : process.env.COLOR.white};
 
 	color: ${({ active, disabled }) =>
-		disabled ? color.disabledText : active ? color.white : color.primary};
+		disabled ? process.env.COLOR.disabledText : active ? process.env.COLOR.white : process.env.COLOR.primary};
 
 	box-shadow: ${({ disabled }) =>
 		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.2)'};
@@ -86,7 +85,7 @@ const IconButton = styled.button`
 		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.4)'};
 	}
 	&:focus {
-		box-shadow: 0 0 3px 2px ${color.outline};
+		box-shadow: 0 0 3px 2px ${process.env.COLOR.outline};
 		outline: none;
 	}
 	& > svg {

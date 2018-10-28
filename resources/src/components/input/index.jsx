@@ -7,13 +7,11 @@ export default class InputComponent extends Component {
 		mod: PropTypes.shape({
 			delay: PropTypes.bool
 		}),
-		value: PropTypes.string,
 		defaultValue: PropTypes.string,
 		style: PropTypes.object
 	};
 
 	static defaultProps = {
-		value: '',
 		defaultValue: '',
 		style: {}
 	};
@@ -21,30 +19,21 @@ export default class InputComponent extends Component {
 	constructor() {
 		super();
 		this.timer = null;
-		this.state = {
-			value: ''
-		};
 	}
 
 	handleChangeDelay = event => {
-		this.setState({ value: event.target.value });
 		if (this.timer) clearTimeout(this.timer);
-		this.timer = setTimeout(() => this.update(), 700);
+		const value = event.target.value;
+		this.timer = setTimeout(() => this.props.onChange(value), 700);
 	};
 
 	handleChange = event => {
-		this.setState({ value: event.target.value });
-		this.update();
-	};
-
-	update = () => {
-		this.props.onChange(this.state.value);
+		this.props.onChange(event.target.value);
 	};
 
 	render() {
 		return (
 			<Input
-				value={this.state.value}
 				defaultValue={this.props.defaultValue}
 				style={this.props.style}
 				onChange={

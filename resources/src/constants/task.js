@@ -1,6 +1,5 @@
-import { color } from './';
 export const TASK = {
-	status: { 0: color.normal, 1: color.danger, 2: color.success },
+	status: { 0: process.env.COLOR.normal, 1: process.env.COLOR.danger, 2: process.env.COLOR.success },
 	PRIORITY: { 1: null, 2: null, 3: null, 4: null, 5: null },
 	TASK_TYPE: ['avaibleList', 'doneList'],
 	PERIOD: {

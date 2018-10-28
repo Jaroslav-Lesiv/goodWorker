@@ -1,19 +1,18 @@
 import styled from 'styled-components';
-import { color } from '../';
 import { Block } from '../main';
 
 const TaskWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-	background-color: ${color.white};
+	background-color: ${process.env.COLOR.white};
 	padding: 10px;
 	width: 100%;
 	flex-grow: 1;
-	border-bottom: 1px solid ${color.light};
+	border-bottom: 1px solid ${process.env.COLOR.light};
 `;
 
 const TaskName = styled.span`
-	color: ${color.textColor};
+	color: ${process.env.COLOR.textColor};
 	line-height: 23px;
 	font-size: 15px;
 	cursor: pointer;
@@ -21,7 +20,7 @@ const TaskName = styled.span`
 	text-decoration: none;
 	font-weight: 600;
 	&:hover {
-		color: ${color.primary};
+		color: ${process.env.COLOR.primary};
 		text-decoration: underline;
 	}
 `;
@@ -31,14 +30,14 @@ const TaskDescription = styled.p`
     word-wrap: break-word;
     word-break: break-word;
     font-size: 13px;
-    color: ${color.textColor};
+    color: ${process.env.COLOR.textColor};
     display: flex;
     /* cursor: pointer; */
     line-height: 1.42857;
     margin-bottom: 10px;
     margin: none;
     /* &:hover {
-        color: ${color.primary};
+        color: ${process.env.COLOR.primary};
     } */
 `;
 const TaskInfoBlock = styled(Block)`

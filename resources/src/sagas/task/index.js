@@ -1,5 +1,5 @@
 import { put } from 'redux-saga/effects';
-import storage from '../../config/localStore';
+import storage from '../../service/storage';
 import * as action from '../../redux/actions';
 import taskWorker from '../../redux/workers/tasks';
 import taskContext from '../../redux/context/tasks';

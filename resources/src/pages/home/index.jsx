@@ -1,35 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import logo from '../../assets/images/logo/logo-beta.svg';
-import { withRouter } from 'react-router';
-import { PageSection } from '../../components/common/pageWrapper';
 import Typography from '@material-ui/core/Typography';
+import { translate } from 'react-multi-lang';
+import { withRouter } from 'react-router';
+import logo from '../../assets/images/logo/logo-beta.svg';
+import { PageSection } from '../../components/common/pageWrapper';
 
 export class HomePage extends Component {
 	static propTypes = {
-		user: PropTypes.object
+		user: PropTypes.object,
+		t: PropTypes.func
 	};
 
 	render() {
 		const { user } = this.props;
 		const { username } = user;
+		console.log(this.props);
 		return (
 			<PageSection>
 				<div className="App">
 					<header className="App-header">
 						<img src={logo} className="App-logo" alt="logo" />
 						<h1 className="App-title">Hi {username}</h1>
-						<h5>Welcome to GoodWorker desktop app</h5>
+						<h5>Welcome to {this.props.t('app.name')} desktop app</h5>
 					</header>
-					<h4 className="App-intro">
-						What Makes a Great Time Tracking App?
-					</h4>
-					<Typography>Tracking time as you work results in more accurate invoices than estimating
-					time worked after the fact. Having a higher degree of accuracy creates trust for
-					your clients, too, but it also benefits the business. When you know how you spend
-					your time with high accuracy, you can analyze it and make smarter business decisions
-					as a result. There are several excellent apps that can help you get started.</Typography>
+					<h4 className="App-intro">What Makes a Great Time Tracking App?</h4>
+					<Typography>
+						Tracking time as you work results in more accurate invoices than
+						estimating time worked after the fact. Having a higher degree of
+						accuracy creates trust for your clients, too, but it also benefits
+						the business. When you know how you spend your time with high
+						accuracy, you can analyze it and make smarter business decisions as
+						a result. There are several excellent apps that can help you get
+						started.
+					</Typography>
 				</div>
 			</PageSection>
 		);
@@ -42,9 +47,11 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = {};
 
-export default withRouter(
-	connect(
-		mapStateToProps,
-		mapDispatchToProps
-	)(HomePage)
+export default translate(
+	withRouter(
+		connect(
+			mapStateToProps,
+			mapDispatchToProps
+		)(HomePage)
+	)
 );

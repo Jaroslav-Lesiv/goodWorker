@@ -1,4 +1,4 @@
-import storage from '../../../config/localStore';
+import storage from '../../../service/storage';
 
 const getAvailableList = async () => storage.get('availableList');
 

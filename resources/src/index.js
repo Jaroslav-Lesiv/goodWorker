@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import configStore from './redux/store/index';
 import createMemoryHistory from 'history/createMemoryHistory';
-
+import './utils/translate';
 // const old_root = document.getElementById(APP_NAME);
 const history = createMemoryHistory({
 	initialEntries: ['/'], // The initial URLs in the history stack

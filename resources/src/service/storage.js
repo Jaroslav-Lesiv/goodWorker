@@ -1,4 +1,4 @@
-import { availableList, doneList, activeTask } from './mockData';
+import { availableList, doneList, activeTask } from '../assets/data/mockData';
 
 const mockStore = class {
 	constructor() {

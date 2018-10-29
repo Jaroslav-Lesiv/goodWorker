@@ -9,48 +9,53 @@ Tracking time as you work results in more accurate invoices than estimating time
 
 ## For run project you need
 
- -  `npm i` or `yarn`
+- `npm i` or `yarn`
 
-if you wont run project in your browser run 
+if you wont run project in your browser run
 
- - `npm run start:dev`
+- `npm run start:dev`
 
-if  you wont run prebuild app run 
+if you wont run prebuild app run
 
- - `npm run build:app` or `yarn build:app`
- - `npm run prebuild` or `yarn run prebuild`
- 
-## For create release build run 
- 
- Windows
- 
- - x32 - `npm run releases:win32` or `yarn releases:win32`
- - x64 - `npm run releases:win64` or `yarn releases:win64`
+- `npm run build:app` or `yarn build:app`
+- `npm run prebuild` or `yarn run prebuild`
+
+## For create release build run
+
+Windows
+
+- x32 - `npm run releases:win32` or `yarn releases:win32`
+- x64 - `npm run releases:win64` or `yarn releases:win64`
 
 MacOS
 
- - `npm run build:mac` or `yarn build:mac`
+- `npm run build:mac` or `yarn build:mac`
 
 Linux (Debian)
 
- - `npm run build:linux` or `yarn build:linux`
- 
- ![enter image description here](/screens/DeepinScreenshot_tasklistscreen.png)
- 
-  
+- `npm run build:linux` or `yarn build:linux`
+
+![enter image description here](/screens/DeepinScreenshot_tasklistscreen.png)
+
 ## For create installer
- 
- Windows
- 
- - x32 .msi and .exe - `npm run installer:win32` or `yarn installer:win32`
- - x64 .msi and .exe - `npm run installer:win64` or `yarn installer:win64`
+
+Windows
+
+- x32 .msi and .exe - `npm run installer:win32` or `yarn installer:win32`
+- x64 .msi and .exe - `npm run installer:win64` or `yarn installer:win64`
 
 MacOS
 
- - .dmg `npm run installer:mac` or `yarn installer:mac`
+- .dmg `npm run installer:mac` or `yarn installer:mac`
 
 Linux (Debian)
 
- - .deb `npm run installer:deb` or `yarn installer:deb`
- 
-  ![enter image description here](/screens/DeepinScreenshot_donelistscreen.png)
+- .deb `npm run installer:deb` or `yarn installer:deb`
+
+![enter image description here](/screens/DeepinScreenshot_donelistscreen.png)
+
+## Modules
+
+#### Lang
+
+`https://www.npmjs.com/package/react-multi-lang`

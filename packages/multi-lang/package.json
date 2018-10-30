@@ -1,0 +1,20 @@
+{
+  "name": "multi-lang",
+  "version": "1.0.0",
+  "description": "Multi lang",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lang",
+    "tans",
+    "t"
+  ],
+  "author": "Jaroslav_Lesiv",
+  "license": "ISC",
+  "dependencies": {
+    "hoist-non-react-statics": "^3.1.0",
+    "react": "^16.6.0"
+  }
+}

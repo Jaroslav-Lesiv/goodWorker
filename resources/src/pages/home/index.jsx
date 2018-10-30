@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import { translate } from '../../lib/multi-lang';
+import { translate } from 'multi-lang';
 import { withRouter } from 'react-router';
 import logo from '../../assets/images/logo/logo-beta.svg';
 import { PageSection } from '../../components/common/pageWrapper';
@@ -14,17 +14,17 @@ export class HomePage extends Component {
 	};
 
 	render() {
-		const { user } = this.props;
+		const { user, t } = this.props;
 		const { username } = user;
 		return (
 			<PageSection>
 				<div className="App">
 					<header className="App-header">
 						<img src={logo} className="App-logo" alt="logo" />
-						<h1 className="App-title">Hi {username}</h1>
-						<h5>Welcome to {this.props.t('app.name')} desktop app</h5>
+						<h1 className="App-title">{t('short.hi_name', { name: username })}</h1>
+						<h5>Welcome to {t('app.name')} desktop app</h5>
 					</header>
-					<h4 className="App-intro">What Makes a Great Time Tracking App?</h4>
+					<h4 className="App-intro">{t('home.what_must_do')}</h4>
 					<Typography>
 						Tracking time as you work results in more accurate invoices than
 						estimating time worked after the fact. Having a higher degree of

@@ -4,7 +4,7 @@ import storage from '../service/storage';
 import {
 	setTranslations,
 	setDefaultLanguage,
-} from 'react-multi-lang';
+} from '../lib/multi-lang';
 
 const lang = storage.get('lang') || 'en';
 // Do this two lines only when setting up the application

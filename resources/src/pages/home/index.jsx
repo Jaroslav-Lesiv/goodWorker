@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import { translate } from 'react-multi-lang';
+import { translate } from '../../lib/multi-lang';
 import { withRouter } from 'react-router';
 import logo from '../../assets/images/logo/logo-beta.svg';
 import { PageSection } from '../../components/common/pageWrapper';
@@ -16,7 +16,6 @@ export class HomePage extends Component {
 	render() {
 		const { user } = this.props;
 		const { username } = user;
-		console.log(this.props);
 		return (
 			<PageSection>
 				<div className="App">

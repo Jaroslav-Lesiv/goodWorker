@@ -8,7 +8,6 @@ import * as utils from '../../utils';
 import { task } from '../../redux/actions';
 import taskSelector from '../../redux/selectors/tasks';
 
-
 export class DoneTaskList extends Component {
 	static propTypes = {
 		doneList: PropTypes.arrayOf(PropTypes.object),
@@ -25,12 +24,25 @@ export class DoneTaskList extends Component {
 		this.props.fetchDoneList();
 	};
 
+	shouldComponentUpdate = props => {
+		return (
+			JSON.stringify(this.props.doneList) !==
+			JSON.stringify(props.doneList)
+		);
+	};
+
 	render() {
 		return (
 			<TaskListWrapper shadow>
-				{this.props.doneList.filter(task => 
-					utils.findString(task.label, this.props.keyword) ||
-					utils.findString(task.description, this.props.keyword))
+				{this.props.doneList
+					.filter(
+						task =>
+							utils.findString(task.label, this.props.keyword) ||
+							utils.findString(
+								task.description,
+								this.props.keyword
+							)
+					)
 					.map(task => (
 						<DoneTaskListItemContainer key={task.id} {...task} />
 					))}
@@ -43,7 +55,6 @@ const mapStateToProps = state => ({
 	doneList: taskSelector.doneList(state),
 	keyword: taskSelector.filterKeyword(state)
 });
-
 
 const mapDispatchToProps = {
 	fetchDoneList: task.doneList.request.pending

@@ -2,6 +2,7 @@ module.exports = {
 	APP_NAME: 'GoodWorker',
 	APP_WIDTH: 500,
 	APP_HEIGHT: 600,
+	DATA_DELAY: 600,
 	NAVIGATION_HEIGHT: 60,
 	COLOR: {
 		primary: 'rgb(7, 71, 166)',
@@ -17,4 +18,4 @@ module.exports = {
 		normal: '#009688',
 		bgLight: 'snow'
 	}
-}
+};

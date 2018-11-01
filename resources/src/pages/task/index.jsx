@@ -13,11 +13,19 @@ export class TaskPage extends Component {
 		priority: PropTypes.number,
 		status: PropTypes.number,
 		total: PropTypes.number,
-		created_at: PropTypes.string,
+		created_at: PropTypes.string
 	};
 
 	render() {
-		const { label, description, id, priority, status, total, created_at } = this.props;
+		const {
+			label,
+			description,
+			id,
+			priority,
+			status,
+			total,
+			created_at
+		} = this.props;
 		return (
 			<PageSection>
 				<Container shadow>

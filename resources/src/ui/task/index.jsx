@@ -54,9 +54,10 @@ const TaskControlBlock = styled(Block)`
 	justify-content: space-between;
 `;
 
-const TimeUI = styled.span`
-	color: grey;
-`;
+const TimeUI = styled.span(props => ({
+	fontWeight: 600,
+	color: props.active ? process.env.COLOR.primary : 'grey'
+}));
 
 export {
 	TaskWrapper,

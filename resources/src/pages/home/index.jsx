@@ -21,18 +21,21 @@ export class HomePage extends Component {
 				<div className="App">
 					<header className="App-header">
 						<img src={logo} className="App-logo" alt="logo" />
-						<h1 className="App-title">{t('short.hi_name', { name: username })}</h1>
+						<h1 className="App-title">
+							{t('short.hi_name', { name: username })}
+						</h1>
 						<h5>Welcome to {t('app.name')} desktop app</h5>
 					</header>
 					<h4 className="App-intro">{t('home.what_must_do')}</h4>
 					<Typography>
-						Tracking time as you work results in more accurate invoices than
-						estimating time worked after the fact. Having a higher degree of
-						accuracy creates trust for your clients, too, but it also benefits
-						the business. When you know how you spend your time with high
-						accuracy, you can analyze it and make smarter business decisions as
-						a result. There are several excellent apps that can help you get
-						started.
+						Tracking time as you work results in more accurate
+						invoices than estimating time worked after the fact.
+						Having a higher degree of accuracy creates trust for
+						your clients, too, but it also benefits the business.
+						When you know how you spend your time with high
+						accuracy, you can analyze it and make smarter business
+						decisions as a result. There are several excellent apps
+						that can help you get started.
 					</Typography>
 				</div>
 			</PageSection>

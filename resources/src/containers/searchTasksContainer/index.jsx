@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {task} from '../../redux/actions';
+import { task } from '../../redux/actions';
 import Input from '../../components/input';
 import taskSelector from '../../redux/selectors/tasks';
 
@@ -23,7 +23,6 @@ export class SearchTasksContainer extends Component {
 		);
 	}
 }
-
 
 const mapDispatchToProps = {
 	setFilterKeyword: task.setFilterKeyword

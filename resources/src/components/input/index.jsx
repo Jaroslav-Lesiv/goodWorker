@@ -37,7 +37,9 @@ export default class InputComponent extends Component {
 				defaultValue={this.props.defaultValue}
 				style={this.props.style}
 				onChange={
-					this.props.mod.delay ? this.handleChangeDelay : this.handleChange
+					this.props.mod.delay
+						? this.handleChangeDelay
+						: this.handleChange
 				}
 			/>
 		);

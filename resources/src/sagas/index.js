@@ -10,7 +10,7 @@ function* userLoginWorker() {
 	yield takeLatest(action.user.login, user.setUsernameToLocalStorage);
 }
 function* fetchInitWorker() {
-	yield takeEvery(action.app.init, function* () {
+	yield takeEvery(action.app.init, function*() {
 		yield put(action.user.checkUser());
 		yield put(action.task.checkActiveTask({ period: 1, increment: 0 }));
 		yield put(action.task.activeTask.request.pending());
@@ -45,7 +45,6 @@ function* fetchGetDoneList() {
 
 function* fetchGetActiveTask() {
 	yield takeLatest(action.task.activeTask.request.pending, task.getActive);
-
 }
 
 function* fetchCheckActiveTask() {

@@ -4,7 +4,9 @@ const Button = styled.button`
 	border: none;
 	padding: 15px 25px;
 	background-color: ${({ status }) =>
-		status === 'active' ? process.env.COLOR.primary : process.env.COLOR.white};
+		status === 'active'
+			? process.env.COLOR.primary
+			: process.env.COLOR.white};
 	border-radius: 2px;
 	box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
 	&:hover {
@@ -24,13 +26,17 @@ const Input = styled.input`
 	box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
 
 	background-color: ${({ active, disabled }) =>
-		disabled ? process.env.COLOR.disabled : active ? process.env.COLOR.primary : process.env.COLOR.white};
+		disabled
+			? process.env.COLOR.disabled
+			: active
+				? process.env.COLOR.primary
+				: process.env.COLOR.white};
 
 	box-shadow: ${({ disabled }) =>
 		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.2)'};
 	&:hover {
 		box-shadow: ${({ disabled }) =>
-		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.4)'};
+			disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.4)'};
 	}
 	&:focus {
 		box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.4);
@@ -46,13 +52,17 @@ const Textarea = styled.textarea`
 	box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.2);
 
 	background-color: ${({ active, disabled }) =>
-		disabled ? process.env.COLOR.disabled : active ? process.env.COLOR.primary : process.env.COLOR.white};
+		disabled
+			? process.env.COLOR.disabled
+			: active
+				? process.env.COLOR.primary
+				: process.env.COLOR.white};
 
 	box-shadow: ${({ disabled }) =>
 		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.2)'};
 	&:hover {
 		box-shadow: ${({ disabled }) =>
-		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.4)'};
+			disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.4)'};
 	}
 	&:focus {
 		box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.4);
@@ -73,16 +83,24 @@ const IconButton = styled.button`
 	transition: 400ms;
 	border-radius: ${({ circle }) => (circle ? '50%' : '2px')};
 	background-color: ${({ active, disabled }) =>
-		disabled ? process.env.COLOR.disabled : active ? process.env.COLOR.primary : process.env.COLOR.white};
+		disabled
+			? process.env.COLOR.disabled
+			: active
+				? process.env.COLOR.primary
+				: process.env.COLOR.white};
 
 	color: ${({ active, disabled }) =>
-		disabled ? process.env.COLOR.disabledText : active ? process.env.COLOR.white : process.env.COLOR.primary};
+		disabled
+			? process.env.COLOR.disabledText
+			: active
+				? process.env.COLOR.white
+				: process.env.COLOR.primary};
 
 	box-shadow: ${({ disabled }) =>
 		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.2)'};
 	&:hover {
 		box-shadow: ${({ disabled }) =>
-		disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.4)'};
+			disabled ? 'none' : '1px 1px 6px 0 rgba(0, 0, 0, 0.4)'};
 	}
 	&:focus {
 		box-shadow: 0 0 3px 2px ${process.env.COLOR.outline};

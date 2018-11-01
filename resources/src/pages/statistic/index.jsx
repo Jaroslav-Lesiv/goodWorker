@@ -14,12 +14,10 @@ export class HomePage extends Component {
 
 	componentDidMount = () => {
 		utils.updateTitle('Statistic');
-	}
+	};
 
 	render() {
-		return (
-			<NotFound />
-		);
+		return <NotFound />;
 	}
 }
 

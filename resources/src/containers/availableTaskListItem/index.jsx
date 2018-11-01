@@ -22,7 +22,7 @@ import PriorityComponent from '../../components/priority';
 import StatusComponent from '../../components/status';
 import Time from '../../components/time';
 
-class AvailableTaskListItemContainer extends React.PureComponent {
+class AvailableTaskListItemContainer extends React.Component {
 	static propTypes = {
 		label: PropTypes.string,
 		description: PropTypes.string,
@@ -59,6 +59,11 @@ class AvailableTaskListItemContainer extends React.PureComponent {
 		};
 	}
 
+	shouldComponentUpdate = (props, state) =>
+		state.isHovered !== this.state.isHovered ||
+		this.props.currentTaskID !== props.currentTaskID ||
+		this.props.total !== props.total;
+
 	doneTask = () => this.props.doneTask(this.props.id);
 
 	activateTask = () => this.props.activateTask(this.props.id);
@@ -93,16 +98,20 @@ class AvailableTaskListItemContainer extends React.PureComponent {
 
 	render() {
 		const { isHovered } = this.state;
-		const { label, description, priority, status, modifications } = this.props;
+		const {
+			label,
+			description,
+			priority,
+			status,
+			modifications
+		} = this.props;
 		const { link, hover } = modifications;
 		const activeTask = this.checkActiveTask();
-		const isShowControl = !hover || isHovered;
-		
+		const isShowControl = !hover || isHovered || activeTask;
 		return (
 			<TaskWrapper
 				onMouseEnter={hover ? () => this.setHover(true) : undefined}
-				onMouseLeave={hover ? () => this.setHover(false) : undefined}
-			>
+				onMouseLeave={hover ? () => this.setHover(false) : undefined}>
 				<Block direction={'column'}>
 					<TaskInfoBlock>
 						<TaskName onClick={link ? this.onSelect : undefined}>
@@ -122,7 +131,11 @@ class AvailableTaskListItemContainer extends React.PureComponent {
 						<Block direction={'row'} justify={'flex-end'}>
 							<Grow in={isShowControl}>
 								<ClickedIcon
-									onClick={activeTask ? this.stopTask : this.activateTask}
+									onClick={
+										activeTask
+											? this.stopTask
+											: this.activateTask
+									}
 									size={17}
 									circle
 									margin={'0 0 0 3.5px'}
@@ -146,7 +159,10 @@ class AvailableTaskListItemContainer extends React.PureComponent {
 						<Block align={'flex-end'}>
 							<Grow in={isShowControl}>
 								<div>
-									<Time time={this.props.total} />
+									<Time
+										active={activeTask}
+										time={this.props.total}
+									/>
 								</div>
 							</Grow>
 						</Block>

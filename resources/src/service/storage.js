@@ -1,4 +1,9 @@
-import { availableList, doneList, activeTask } from '../assets/data/mockData';
+import {
+	availableList,
+	doneList,
+	activeTask,
+	logs
+} from '../assets/data/mockData';
 
 const mockStore = class {
 	constructor() {
@@ -9,6 +14,7 @@ const mockStore = class {
 		this.set('availableList', availableList);
 		this.set('doneList', doneList);
 		this.set('activeTask', activeTask.id);
+		this.set('logs', logs);
 	}
 
 	get(name) {

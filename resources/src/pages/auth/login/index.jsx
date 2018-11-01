@@ -30,8 +30,8 @@ const styles = theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-			.spacing.unit * 3}px`
+		padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit *
+			3}px ${theme.spacing.unit * 3}px`
 	},
 	avatar: {
 		margin: theme.spacing.unit,
@@ -94,8 +94,7 @@ class LoginPage extends React.Component {
 								fullWidth
 								variant="raised"
 								color="primary"
-								className={classes.submit}
-							>
+								className={classes.submit}>
 								login
 							</Button>
 						</form>

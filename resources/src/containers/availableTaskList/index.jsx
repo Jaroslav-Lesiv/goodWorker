@@ -24,12 +24,22 @@ export class AvailableTaskList extends Component {
 		this.props.fetchAvailableList();
 	};
 
+	// shouldComponentUpdate = props => {
+	// 	return JSON.stringify(this.props.availableList) !== JSON.stringify(props.availableList);
+	// }
+
 	render() {
 		return (
 			<TaskListWrapper shadow>
-				{this.props.availableList.filter(task => 
-					utils.findString(task.label, this.props.keyword) ||
-					utils.findString(task.description, this.props.keyword))
+				{this.props.availableList
+					.filter(
+						task =>
+							utils.findString(task.label, this.props.keyword) ||
+							utils.findString(
+								task.description,
+								this.props.keyword
+							)
+					)
 					.map(task => (
 						<AvailableTaskListItemContainer
 							modifications={{

@@ -1,4 +1,5 @@
 import storage from '../../../service/storage';
+import { buildError } from '../../../utils';
 
 const getAvailableList = async () => storage.get('availableList');
 
@@ -12,22 +13,22 @@ const getAvailableTask = async id => {
 	if (task) {
 		return task;
 	} else {
-		throw 'Available task not found';
+		buildError('Available task not found');
 	}
 };
 
 const setActive = async id => storage.set('activeTask', id);
 
-const updateAvailableTask = async ({task}) => {
-	let list =  await getAvailableList();
-	const idx = list.findIndex( _task => _task.id === task.id );
+const updateAvailableTask = async ({ task }) => {
+	let list = await getAvailableList();
+	const idx = list.findIndex(_task => _task.id === task.id);
 
 	if (~idx) {
 		list[idx] = task;
 		await setAvailableList(list);
 		return true;
 	} else {
-		throw `Can't update task ${task.id}`;
+		buildError(`Can't update task ${task.id}`);
 	}
 };
 
@@ -37,7 +38,7 @@ const activateTask = async id => {
 	if (exist) {
 		setActive(id);
 	} else {
-		throw `Can't activate task ${id}`;
+		buildError(`Can't activate task ${id}`);
 	}
 };
 
@@ -50,8 +51,20 @@ const getActiveTask = async () => {
 	if (activateTask) {
 		return activeTask;
 	} else {
-		throw 'Active task not found';
+		buildError('Active task not found');
 	}
+};
+
+const getLastAvailableTask = async () => {
+	const list = await getAvailableList();
+	return list[list.length - 1] || {};
+};
+
+const putLog = async log => {
+	let list = storage.get('logs');
+	list.push(log);
+	storage.set('logs', list);
+	return true;
 };
 
 export default {
@@ -61,5 +74,7 @@ export default {
 	getAvailableTask,
 	getActiveTask,
 	updateAvailableTask,
-	stopTask
+	stopTask,
+	getLastAvailableTask,
+	putLog
 };

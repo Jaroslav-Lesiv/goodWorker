@@ -3,6 +3,7 @@ import storage from '../../service/storage';
 import * as action from '../../redux/actions';
 import taskWorker from '../../redux/workers/tasks';
 import taskContext from '../../redux/context/tasks';
+import windowMonitor from '../../service/monitor';
 // import tasksSelector from '../../redux/selectors/tasks';
 import { delay } from 'redux-saga';
 import { TASK } from '../../constants';
@@ -53,42 +54,52 @@ function* moveTaskToAvailable({ payload }) {
 
 function* getAvailableList() {
 	const availableList = storage.get('availableList');
+	// yield delay(process.env.DATA_DELAY);
 	yield put(action.task.availableList.request.success(availableList));
 }
 function* getDoneList() {
 	const doneList = storage.get('doneList');
+	// yield delay(process.env.DATA_DELAY);
 	yield put(action.task.doneList.request.success(doneList));
 }
 
-function* checkActiveTask({payload}) {
+function* checkActiveTask({ payload }) {
 	let { period = 1, increment } = payload;
 	if (increment === undefined) increment = period;
 	try {
 		const activeId = yield taskContext.getActiveTask();
 		if (activeId) {
 			const task = yield taskContext.getAvailableTask(activeId);
-			const updatedTask = yield taskWorker.updateTask({task, period: increment});
+			// const prevTask = yield taskContext.getLastAvailableTask();
+			// console.log({ log });
+			const updatedTask = yield taskWorker.updateTask({
+				task,
+				period: increment
+			});
 			yield taskContext.updateAvailableTask({ task: updatedTask });
 			yield put(action.task.availableList.request.pending());
+
+			yield windowMonitor.getSnapshot({ task });
+			// const log = yield taskWorker.generateLog({ task, snapshot });
+			// yield taskContext.putLog(log);
 		}
-		
+
 		yield delay(TASK.PERIOD[period]);
 		yield put(action.task.checkActiveTask({ period }));
 	} catch (error) {
 		console.warn(error);
 		yield delay(TASK.PERIOD[period]);
-		yield put(action.task.checkActiveTask({period}));
+		yield put(action.task.checkActiveTask({ period }));
 	}
-
 }
 
-function* activateTask({payload}) {
+function* activateTask({ payload }) {
 	try {
 		const task = yield taskContext.getAvailableList(payload);
 		if (task) {
 			yield taskContext.activateTask(payload);
 			yield put(action.task.activeTask.request.pending());
-			yield put(action.task.checkActiveTask({period: 1, increment: 0}));
+			yield put(action.task.checkActiveTask({ period: 1, increment: 0 }));
 		}
 	} catch (error) {
 		console.warn(error);
@@ -98,7 +109,7 @@ function* activateTask({payload}) {
 function* getActive() {
 	try {
 		const id = yield taskContext.getActiveTask();
-		yield put(action.task.activeTask.request.success({ id })); 
+		yield put(action.task.activeTask.request.success({ id }));
 	} catch (error) {
 		console.warn(error);
 		yield put(action.task.activeTask.request.failed(error));
@@ -114,7 +125,13 @@ function* stopTask() {
 	}
 }
 
-export { 
-	moveTaskToDone, getAvailableList, getDoneList, moveTaskToAvailable,
-	checkActiveTask, activateTask, getActive, stopTask
+export {
+	moveTaskToDone,
+	getAvailableList,
+	getDoneList,
+	moveTaskToAvailable,
+	checkActiveTask,
+	activateTask,
+	getActive,
+	stopTask
 };

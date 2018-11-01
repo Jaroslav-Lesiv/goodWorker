@@ -25,11 +25,11 @@ export class HomePage extends Component {
 			<PageSection>
 				<TaskListControl />
 
-				{activeList === 'availableList'
-					? <AvailableTaskList />
-					: activeList === 'doneList'
-						? <DoneTaskList />
-						: null}
+				{activeList === 'availableList' ? (
+					<AvailableTaskList />
+				) : activeList === 'doneList' ? (
+					<DoneTaskList />
+				) : null}
 			</PageSection>
 		);
 	}

@@ -17,7 +17,7 @@ export default class StatusComponent extends Component {
 
 	static defaultProps = {
 		status: 0
-	}
+	};
 
 	shouldComponentUpdate = ({ status }) => status !== this.props.status;
 

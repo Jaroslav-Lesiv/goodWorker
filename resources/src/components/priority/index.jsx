@@ -22,7 +22,10 @@ export default class PriorityComponent extends Component {
 						type <= priority ? (
 							<Flag key={idx} fontSize={size || 'default'} />
 						) : (
-							<FlagOutlined key={idx} fontSize={size || 'default'} />
+							<FlagOutlined
+								key={idx}
+								fontSize={size || 'default'}
+							/>
 						)
 				)}
 			</Block>

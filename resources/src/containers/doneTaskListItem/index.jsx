@@ -35,7 +35,7 @@ class DoneTaskListItemContainer extends React.PureComponent {
 		};
 	}
 
-	backTask = () => this.props.backTask(this.props.id)
+	backTask = () => this.props.backTask(this.props.id);
 
 	setHover = bool => this.setState({ isHovered: bool });
 
@@ -45,8 +45,7 @@ class DoneTaskListItemContainer extends React.PureComponent {
 		return (
 			<TaskWrapper
 				onMouseEnter={() => this.setHover(true)}
-				onMouseLeave={() => this.setHover(false)}
-			>
+				onMouseLeave={() => this.setHover(false)}>
 				<TaskInfoBlock>
 					<TaskName to={`task/${id}`}>
 						{utils.overflowTaskLabel(label)}

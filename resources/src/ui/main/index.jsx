@@ -13,7 +13,8 @@ const Wrapper = styled.div`
 	margin: 0 auto;
 	justify-content: flex-start;
 	align-items: flex-start;
-	box-shadow: -6px 0 50px 0 rgba(0, 0, 0, 0.4), 2px 0 50px 0 rgba(0, 0, 0, 0.4);
+	box-shadow: -6px 0 50px 0 rgba(0, 0, 0, 0.4),
+		2px 0 50px 0 rgba(0, 0, 0, 0.4);
 `;
 const Main = styled.div`
 	display: flex;

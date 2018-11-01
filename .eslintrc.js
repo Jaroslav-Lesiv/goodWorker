@@ -1,10 +1,4 @@
 module.exports = {
-	ecmaFeatures: {
-		modules: true,
-		arrowFunctions: true,
-		jsx: true,
-		classes: true
-	},
 	env: {
 		browser: true,
 		es6: true
@@ -18,21 +12,26 @@ module.exports = {
 		},
 		sourceType: 'module'
 	},
-	plugins: ['react'],
+	plugins: ['react', 'prettier'],
 	rules: {
-		'no-console': ['error', { allow: ['warn', 'error', 'log', 'info', 'time', 'timeEnd'] }],
+		'prettier/prettier': 'error',
+		'no-console': [
+			'error',
+			{ allow: ['warn', 'error', 'log', 'info', 'time', 'timeEnd'] }
+		],
 		'react/jsx-uses-react': 'error',
 		'react/jsx-uses-vars': 'error',
-		indent: ['error', 'tab'],
+		indent: ['off', 'tab'],
 		'linebreak-style': ['warn', 'unix'],
 		quotes: ['error', 'single'],
-		semi: ['error', 'always']
+		semi: ['error', 'always'],
+		'no-throw-literal': 'warn'
 	},
 	settings: {
 		react: {
 			// default to "createReactClass"
 			pragma: 'React', // Pragma to use, default to "React"
-			version: '16.3' // React version, default to the latest React stable release
+			version: '16.5' // React version, default to the latest React stable release
 		},
 		propWrapperFunctions: ['forbidExtraProps'] // The names of any functions used to wrap the
 		// propTypes object, e.g. `forbidExtraProps`.
@@ -42,6 +41,12 @@ module.exports = {
 	globals: {
 		process: true,
 		window: true,
-		require: true
+		require: true,
+		module: true,
+		global: true,
+		it: true,
+		describe: true,
+		beforeEach: true,
+		afterEach: true
 	}
 };

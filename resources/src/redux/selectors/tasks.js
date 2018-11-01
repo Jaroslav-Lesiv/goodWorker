@@ -5,5 +5,5 @@ export default {
 	availableList: state => state.task.availableList,
 	doneList: state => state.task.doneList,
 	filter: state => state.task.filter,
-	filterKeyword: state => state.task.filter.keyword,
+	filterKeyword: state => state.task.filter.keyword
 };

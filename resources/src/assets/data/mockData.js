@@ -1,6 +1,7 @@
 const activeTask = {
 	id: 2
 };
+const logs = [];
 const availableList = [
 	{
 		id: 1,
@@ -10,8 +11,7 @@ const availableList = [
 		created_at: null,
 		checkpoint: null,
 		total: 1000,
-		description:
-			'Create statistic page, analiz all done task'
+		description: 'Create statistic page, analiz all done task'
 	},
 	{
 		id: 2,
@@ -21,8 +21,7 @@ const availableList = [
 		created_at: null,
 		checkpoint: null,
 		total: 3601,
-		description:
-			'Create not found and error ui handler for task'
+		description: 'Create not found and error ui handler for task'
 	},
 	{
 		id: 3,
@@ -32,8 +31,7 @@ const availableList = [
 		created_at: null,
 		checkpoint: null,
 		total: 4350,
-		description:
-			'Create view for subtask, on one task page'
+		description: 'Create view for subtask, on one task page'
 	},
 
 	{
@@ -41,8 +39,7 @@ const availableList = [
 		label: 'Loader',
 		priority: 5,
 		status: 2,
-		description:
-			'Show loader if content is not loaded'
+		description: 'Show loader if content is not loaded'
 	},
 	{
 		id: 5,
@@ -50,8 +47,7 @@ const availableList = [
 
 		priority: 5,
 		status: 2,
-		description:
-			'If task is active, timer must be green (success color)'
+		description: 'If task is active, timer must be green (success color)'
 	},
 	{
 		id: 6,
@@ -97,4 +93,4 @@ const doneList = [
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis quod odio consectetur voluptatem ratione!'
 	}
 ];
-export { availableList, doneList, activeTask };
+export { availableList, doneList, activeTask, logs };

@@ -11,10 +11,16 @@ export class NotFoundPage extends Component {
 
 	componentDidMount = () => {
 		utils.updateTitle('Not found');
-	}
+	};
 
 	render() {
-		return <NotFound message={`Sorry, we couldn't find route ${this.props.history.location.pathname}`} />;
+		return (
+			<NotFound
+				message={`Sorry, we couldn't find route ${
+					this.props.history.location.pathname
+				}`}
+			/>
+		);
 	}
 }
 

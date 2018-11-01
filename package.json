@@ -150,11 +150,11 @@
 	},
 	"husky": {
 		"hooks": {
-		  "pre-commit": "pretty-quick --staged"
+			"pre-commit": "pretty-quick --staged"
 		}
 	},
 	"lint-staged": {
-		"*.{js,json,css,md}": [
+		"*.{js,css,md}": [
 			"prettier --write",
 			"git add"
 		]
